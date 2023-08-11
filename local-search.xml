@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>本站介绍</title>
+    <link href="/2023/08/11/Introduction/"/>
+    <url>/2023/08/11/Introduction/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>这个页面看起来没有多大用处，<del>因为暂时没有太多想写的，所以就用它来充实网站内容</del>。</p><p><strong>TODO:</strong></p><ul><li><input checked disabled type="checkbox"> 在首页上做个<del>日推</del>不定时更新的歌曲推荐；<strong>已完成，见首页置顶</strong></li><li><input checked disabled type="checkbox"> 接入评论系统；<strong>已完成，可用GitHub登录</strong></li><li><input disabled type="checkbox"> 找一些头图和背景图；</li><li><input disabled type="checkbox"> 完善这篇介绍。</li></ul><p>(￣▽￣)</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>杂谈</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>README</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>今日歌单</title>
     <link href="/2023/08/11/Playlist/"/>
     <url>/2023/08/11/Playlist/</url>
@@ -21,31 +46,6 @@
     <tags>
       
       <tag>Music</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>无题</title>
-    <link href="/2023/08/11/Nothing/"/>
-    <url>/2023/08/11/Nothing/</url>
-    
-    <content type="html"><![CDATA[<p>虽然是第一篇文章，但这个页面看起来没有多大用处，<del>因为我还没想好要写什么</del>。</p><p>TODO:</p><p>-在首页上做个<del>日推</del>不定期更新的播放器；</p><p>-配置一套评论系统；</p><p>-TBC.</p><p>(￣▽￣)</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>杂谈</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>README</tag>
       
     </tags>
     
