@@ -5,10 +5,10 @@
   
   <entry>
     <title>本站介绍</title>
-    <link href="/2023/08/11/Introduction/"/>
-    <url>/2023/08/11/Introduction/</url>
+    <link href="/2023/08/12/Introduction/"/>
+    <url>/2023/08/12/Introduction/</url>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>这个页面看起来没有多大用处，<del>因为暂时没有太多想写的，所以就用它来充实网站内容</del>。</p><p><strong>TODO:</strong></p><ul><li><input checked disabled type="checkbox"> 在首页上做个<del>日推</del>不定时更新的歌曲推荐；<strong>已完成，见首页置顶</strong></li><li><input checked disabled type="checkbox"> 接入评论系统；<strong>已完成，可用GitHub登录</strong></li><li><input disabled type="checkbox"> 找一些头图和背景图；</li><li><input disabled type="checkbox"> 完善这篇介绍。</li></ul><p>(￣▽￣)</p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>这个页面看起来没有多大用处，<del>因为暂时没有太多想写的，所以就用它来充实网站内容</del>。</p><p><strong>TODO:</strong></p><ul><li><p><input checked disabled type="checkbox"> 做个<del>日推</del>不定时更新的歌曲推荐；</p><p><strong>已完成，见顶栏链接</strong></p></li><li><p><input checked disabled type="checkbox"> 接入评论系统；</p><p><strong>已完成，可用GitHub登录</strong></p></li><li><p><input checked disabled type="checkbox"> 建立留言板页面；</p><p><strong>已完成，见顶栏链接；使用方式与其它文章底部评论区相同</strong></p></li><li><p><input disabled type="checkbox"> 找一些头图和背景图；</p></li><li><p><input disabled type="checkbox"> 完善这篇介绍。</p></li></ul><p>(￣▽￣)</p>]]></content>
     
     
     <categories>
@@ -21,31 +21,6 @@
     <tags>
       
       <tag>README</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>今日歌单</title>
-    <link href="/2023/08/11/Playlist/"/>
-    <url>/2023/08/11/Playlist/</url>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="今日歌单-不定时更新"><a href="#今日歌单-不定时更新" class="headerlink" title="今日歌单(不定时更新)"></a>今日歌单(不定时更新)</h1><p>歌曲来源：<a href="https://music.163.com/">网易云音乐 (163.com)</a></p><p>歌单中随时都可能混入奇怪的东西(</p>    <div id="aplayer-SdTHzckS" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="8647384417" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="true" data-mutex="false" data-listmaxheight="600px" data-preload="auto" data-theme="#C20C0C"></div>]]></content>
-    
-    
-    <categories>
-      
-      <category>音乐</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Music</tag>
       
     </tags>
     
