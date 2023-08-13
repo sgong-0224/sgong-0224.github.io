@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>关于“App备案制”的个人理解</title>
+    <link href="/2023/08/13/AppAudit/"/>
+    <url>/2023/08/13/AppAudit/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="新规到底说了什么？"><a href="#新规到底说了什么？" class="headerlink" title="新规到底说了什么？"></a>新规到底说了什么？</h3><p>2023年8月4日，工信部发布<a href="https://wap.miit.gov.cn/jgsj/xgj/wjfb/art/2023/art_dd783a581c9644a4aee10afa582811db.html">《工业和信息化部关于开展移动互联网应用程序备案工作的通知》</a>（下称《通知》），其内容在中国互联网上引发热议。舆论关注的焦点在于以下条文：</p><blockquote><p>二、工作内容</p><p>​（一）在中华人民共和国境内从事互联网信息服务的APP主办者，应当依照《中华人民共和国反电信网络诈骗法》《互联网信息服务管理办法》（国务院令第292号）等规定履行备案手续，未履行备案手续的，不得从事APP互联网信息服务。</p><p>​…………</p><p>​<strong>（九）网络接入服务提供者、分发平台、智能终端生产企业不得为未履行备案手续的APP提供网络接入、分发、预置等服务。</strong></p><p>​（十）APP主办者、网络接入服务提供者、分发平台、智能终端生产企业应当建立健全违法违规信息监测和处置机制，发现法律、  行政法规禁止发布或者传输的信息，应当立即停止传输该信息，采取消除等处置措施，防止信息扩散，保存有关记录，并向电信主管部门报告，依据电信主管部门要求进行处置。</p></blockquote><p>大多数网民都把它误读为“白名单”“限制安装”等要求，其实并没有传闻中的那么可怕(不过还是建议持有谨慎乐观的态度)。我们不妨把新规和网站备案要求做个对比，即现行<a href="https://wap.miit.gov.cn/zcfg/xxtxl/art/2009/art_8237334014394e93886c986170bb31c9.html">《非经营性互联网信息服务备案管理办法》</a>的相关条文：</p><blockquote><p>第五条 </p><p>在中华人民共和国境内提供非经营性互联网信息服务，应当依法履行备案手续。</p><p>未经备案，不得在中华人民共和国境内从事非经营性互联网信息服务。</p><p>本办法所称在中华人民共和国境内提供非经营性互联网信息服务，是指在中华人民共和国境内的组织或个人利用通过互联网域名访问的网站或者利用仅能通过互联网 IP 地址访问的网站，提供非经营性互联网信息服务。</p></blockquote><p>然而，只要你的服务器架设在境外，就不受工信部的规定监管，即使不备案也不会被轻易屏蔽(除非你发布或传播了非法信息)。因此，《通知》第（一）（十）两条的规定不会造成什么实质性影响。</p><p>不过，我们或许要针对《通知》第九条作出应对。在开始之前，先建议各位读者对自己的设备环境作出下列调整：</p><p>(1)使用支持SSL&#x2F;TLS应用，禁用TLS1.0&#x2F;1.1等过时协议；</p><p>(2)尽量避免使用国内服务商的DNS，如确实无法避免，打开设备上的DoH(DNS over HTTPS)功能开关；</p><p>(3)不要使用身份不明的网络代理；</p><p>(4)不要安装“国家反诈中心”应用；如必要，将其控制在非日常使用的沙箱环境中运行；</p><p>(5)检查系统的根证书设置（Windows系统相关设置见下图，智能终端可忽略此步），避免使用CNNIC等不受信任机构颁发的证书。</p><img src="/2023/08/13/AppAudit/屏幕截图(3020).png" style="zoom: 67%;"><h3 id="怎么应对新规？"><a href="#怎么应对新规？" class="headerlink" title="怎么应对新规？"></a>怎么应对新规？</h3><p>这里仅提供一些应对思路与相关信息，不对具体步骤作出指导。</p><h4 id="Huawei-vivo设备"><a href="#Huawei-vivo设备" class="headerlink" title="Huawei&#x2F;vivo设备"></a>Huawei&#x2F;vivo设备</h4><p>建议更换设备，或谨慎更新到新规后发布的固件版本。这些设备内建无法关闭的检查功能，或者无法离线安装应用。并且这些设备无法通过常规手段获得系统权限，一旦新规正式推行，存在严重的后门隐患——你的应用可能随时被切断网络权限，包名信息可能在不知情的情况下被上报到监管机构。同时，这些设备内建有臭名昭著的<strong>腾讯天御组件</strong>（详见后文）且无法控制其联网，已经有证据表明，该组件会监听用户的输入、安装等操作，并连接位于广东的不明IDC机房进行上报。</p><p>Huawei设备已有存在后门的证据，可参见以下链接：</p><p>【相关链接——Harmony OS的后门】<a href="https://www.zhihu.com/question/524364957/answer/3128218138">https://www.zhihu.com/question/524364957/answer/3128218138</a> </p><h4 id="Mi-Redmi设备"><a href="#Mi-Redmi设备" class="headerlink" title="Mi&#x2F;Redmi设备"></a>Mi&#x2F;Redmi设备</h4><p>众所周知，粗粮设备非常喜欢跟进合规性要求——尽管这不是件好事。MIUI的“应用包管理组件”存在后门——该组件会检查用户安装的应用是否合规。在联网状态下，已有多位试图安装数字货币钱包、境外社交平台以及其他非法应用<u>(甚至是合法应用，比如5G开关和GCam)</u>的用户被禁止安装。同时，MIUI安全组件同样内建<strong>腾讯天御组件</strong>，其监控甚至相较上文提到的Huawei&#x2F;vivo设备更胜一筹——已有用户因为在小米设备上使用境外支付被请喝茶。</p><p>【相关链接——Mi&#x2F;Redmi存在后门的证据】 <a href="https://www.zhihu.com/question/524364957/answer/3089519980">https://www.zhihu.com/question/524364957/answer/3089519980</a> </p><p>不过幸运的是，你可以提前备份自己的数据，然后耐心地等待168小时——这时，你就可以解开OEM锁，然后刷入TWRP和Magisk以获取设备ROOT权限，并<a href="https://www.zhihu.com/question/524364957/answer/3093449683">安装Xposed模块来关闭Antifraud组件</a>（这个组件的名称颇有讽刺意味——它自身就是最大的安全隐患）。</p><h4 id="其他运行中国大陆版固件的国产品牌设备"><a href="#其他运行中国大陆版固件的国产品牌设备" class="headerlink" title="其他运行中国大陆版固件的国产品牌设备"></a>其他运行中国大陆版固件的国产品牌设备</h4><p>虽然目前没有确凿证据证明后门存在，但建议你时刻保持警惕并作出必要的应对措施——比如关闭杀毒软件、禁用系统安全组件的联网。你应该谨慎购买和使用宣称具有“全链路反诈”功能的设备，这些设备更可能泄露用户隐私或跟进监管要求。</p><h4 id="运行中国大陆版固件的Samsung设备"><a href="#运行中国大陆版固件的Samsung设备" class="headerlink" title="运行中国大陆版固件的Samsung设备"></a>运行中国大陆版固件的Samsung设备</h4><p>这类设备内建<strong>腾讯天御组件</strong>，但目前还没有存在后门的记录。不过由于Samsung设备的特性，可以使用Adhell3应用（<a href="./adhell.zip">点此下载</a> ）</p><p>来控制系统组件的联网权限。完成安装后打开应用，然后按下图设置即可。</p><p><img src="/2023/08/13/AppAudit/Screenshot_20230813_170622_Adhell3.jpg" style="zoom: 25%;"><img src="/2023/08/13/AppAudit/Screenshot_20230813_170810_Adhell3.jpg" alt="Screenshot_20230813_170810_Adhell3" style="zoom: 25%;"></p><h4 id="运行中国大陆版固件的其他国际品牌Android设备-运行海外版固件的国际品牌Android设备"><a href="#运行中国大陆版固件的其他国际品牌Android设备-运行海外版固件的国际品牌Android设备" class="headerlink" title="运行中国大陆版固件的其他国际品牌Android设备||运行海外版固件的国际品牌Android设备"></a>运行中国大陆版固件的其他国际品牌Android设备||运行海外版固件的国际品牌Android设备</h4><p>这些品牌向来尊重用户隐私，即使有后门（可能为境外监管机构所用）也不会导致你被找麻烦。</p><h4 id="iOS设备"><a href="#iOS设备" class="headerlink" title="iOS设备"></a>iOS设备</h4><p><strong>Apple ID地区为“中国大陆”的iOS设备是不安全的设备！</strong></p><p><strong>Apple ID地区为“中国大陆”的iOS设备是不安全的设备！</strong></p><p><strong>Apple ID地区为“中国大陆”的iOS设备是不安全的设备！</strong></p><p>如果你已经登入App Store，可以通过更改Apple ID的信息来实现更改地区。推荐更改地区为“美国”——这允许你选择“无”为付款方式。唯一有点困难的地方就是邮编验证，不过你可以使用<a href="https://www.apple.com/retail/">一家苹果直营店的信息</a>完成验证。</p><h4 id="关于腾讯天御组件-Android-Harmony-OS"><a href="#关于腾讯天御组件-Android-Harmony-OS" class="headerlink" title="关于腾讯天御组件(Android&#x2F;Harmony OS)"></a>关于腾讯天御组件(Android&#x2F;Harmony OS)</h4><p>相关动态链接库文件为libTmsdk-[version]-mfr.so。组件会监视用户设备中是否有非法或敏感内容，并将检测结果与手机号码等个人信息一同上报。如果你的设备中并没有安装QQ，且内部存储中出现了</p><p>&#x2F;storage&#x2F;emulated&#x2F;0&#x2F;DCIM&#x2F;.tmfs</p><p>&#x2F;storage&#x2F;emulated&#x2F;0&#x2F;turing.dat</p><p>等文件，请留意是否有可疑软件包含了腾讯天御组件(可用LibChecker等工具查看)。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>杂谈</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>移动互联网</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>本站介绍</title>
     <link href="/2023/08/12/Introduction/"/>
     <url>/2023/08/12/Introduction/</url>
