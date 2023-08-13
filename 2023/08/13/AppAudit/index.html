@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://sgong-0224.github.io/2023/08/13/AppAudit/Screenshot_20230813_170622_Adhell3.jpg">
 <meta property="og:image" content="https://sgong-0224.github.io/2023/08/13/AppAudit/Screenshot_20230813_170810_Adhell3.jpg">
 <meta property="article:published_time" content="2023-08-13T09:45:00.000Z">
-<meta property="article:modified_time" content="2023-08-13T09:47:03.398Z">
+<meta property="article:modified_time" content="2023-08-13T09:58:44.587Z">
 <meta property="article:author" content="Steven Gong">
 <meta property="article:tag" content="移动互联网">
 <meta name="twitter:card" content="summary_large_image">
@@ -251,7 +251,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.7k字
+          2.9k字
         
       </span>
     
@@ -320,8 +320,10 @@
 <p>未经备案，不得在中华人民共和国境内从事非经营性互联网信息服务。</p>
 <p>本办法所称在中华人民共和国境内提供非经营性互联网信息服务，是指在中华人民共和国境内的组织或个人利用通过互联网域名访问的网站或者利用仅能通过互联网 IP 地址访问的网站，提供非经营性互联网信息服务。</p>
 </blockquote>
-<p>然而，只要你的服务器架设在境外，就不受工信部的规定监管，即使不备案也不会被轻易屏蔽(除非你发布或传播了非法信息)。因此，《通知》第（一）（十）两条的规定不会造成什么实质性影响。</p>
-<p>不过，我们或许要针对《通知》第九条作出应对。在开始之前，先建议各位读者对自己的设备环境作出下列调整：</p>
+<p>然而现状有些许不同：只要你的服务器架设在境外，就不受工信部的规定监管，即使不备案也不会被轻易屏蔽(除非你发布或传播了非法信息)。因此，《通知》第（一）（十）两条的规定不会造成什么实质性影响。</p>
+<p>不过，我们或许要针对《通知》第九条作出应对。我个人认为，第九条的<strong>三个主体与三个义务是一一对应的</strong>，在构想应对方案时也是基于这个前提，以及上文的现状说明。</p>
+<p>由于Web平台的存在，应用不必通过分发平台进行分发；无法预置应用也和用户自行安装应用没有关系。唯一有些争议的地方就是对“网络接入服务提供者”的要求，然而，在HTTPS普及的今天，运营商完全无法获知应用的包名；何况很多人指出，“网络接入服务提供者”特指为App提供服务器的运营方。<strong>因此，我们只需要担心智能终端生产企业作出更加过分的限制并加以应对。</strong></p>
+<p>在开始之前，顺便建议各位读者对自己的设备环境作出调整。无论对智能手机还是PC，这些调整对更加安全、隐秘的网页浏览都有好处：</p>
 <p>(1)使用支持SSL&#x2F;TLS应用，禁用TLS1.0&#x2F;1.1等过时协议；</p>
 <p>(2)尽量避免使用国内服务商的DNS，如确实无法避免，打开设备上的DoH(DNS over HTTPS)功能开关；</p>
 <p>(3)不要使用身份不明的网络代理；</p>
