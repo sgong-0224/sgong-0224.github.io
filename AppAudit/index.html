@@ -1,0 +1,761 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Avatarsi.jpg">
+  <link rel="icon" href="/img/Avatarsi.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Steven Gong">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="新规到底说了什么？2023年8月4日，工信部发布《工业和信息化部关于开展移动互联网应用程序备案工作的通知》（下称《通知》），其内容在中国互联网上引发热议。舆论关注的焦点在于以下条文：  二、工作内容 ​	（一）在中华人民共和国境内从事互联网信息服务的APP主办者，应当依照《中华人民共和国反电信网络诈骗法》《互联网信息服		务管理办法》（国务院令第292号）等规定履行备案手续，未履行备案手续的，不得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于“App备案制”的个人理解">
+<meta property="og:url" content="https://sgong-0224.github.io/AppAudit/index.html">
+<meta property="og:site_name" content="sgong&#39;s homepage">
+<meta property="og:description" content="新规到底说了什么？2023年8月4日，工信部发布《工业和信息化部关于开展移动互联网应用程序备案工作的通知》（下称《通知》），其内容在中国互联网上引发热议。舆论关注的焦点在于以下条文：  二、工作内容 ​	（一）在中华人民共和国境内从事互联网信息服务的APP主办者，应当依照《中华人民共和国反电信网络诈骗法》《互联网信息服		务管理办法》（国务院令第292号）等规定履行备案手续，未履行备案手续的，不得">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sgong-0224.github.io/AppAudit/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(3020).png">
+<meta property="og:image" content="https://sgong-0224.github.io/AppAudit/Screenshot_20230813_170622_Adhell3.jpg">
+<meta property="og:image" content="https://sgong-0224.github.io/AppAudit/Screenshot_20230813_170810_Adhell3.jpg">
+<meta property="article:published_time" content="2023-08-13T09:45:00.000Z">
+<meta property="article:modified_time" content="2023-11-04T06:50:34.064Z">
+<meta property="article:author" content="Steven Gong">
+<meta property="article:tag" content="移动互联网">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgong-0224.github.io/AppAudit/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(3020).png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>关于“App备案制”的个人理解 - sgong&#39;s homepage</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sgong-0224.github.io","root":"/","version":"1.9.5-a","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>sgong&#39;s homepage</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/music/">
+                <i class="iconfont icon-music"></i>
+                <span>今日歌单</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>全部文章</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>类别</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/remark/">
+                <i class="iconfont icon-speakernotes"></i>
+                <span>留言板</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">关于“App备案制”的个人理解</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-13 17:45" pubdate>
+          2023年8月13日 17:45
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          2.9k字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          预计阅读时长：25分钟 
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          浏览量：<span id="busuanzi_value_page_pv"></span> 
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">关于“App备案制”的个人理解</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="新规到底说了什么？"><a href="#新规到底说了什么？" class="headerlink" title="新规到底说了什么？"></a>新规到底说了什么？</h3><p>2023年8月4日，工信部发布<a target="_blank" rel="noopener" href="https://wap.miit.gov.cn/jgsj/xgj/wjfb/art/2023/art_dd783a581c9644a4aee10afa582811db.html">《工业和信息化部关于开展移动互联网应用程序备案工作的通知》</a>（下称《通知》），其内容在中国互联网上引发热议。舆论关注的焦点在于以下条文：</p>
+<blockquote>
+<p>二、工作内容</p>
+<p>​	（一）在中华人民共和国境内从事互联网信息服务的APP主办者，应当依照《中华人民共和国反电信网络诈骗法》《互联网信息服		务管理办法》（国务院令第292号）等规定履行备案手续，未履行备案手续的，不得从事APP互联网信息服务。</p>
+<p>​		…………</p>
+<p>​	<strong>（九）网络接入服务提供者、分发平台、智能终端生产企业不得为未履行备案手续的APP提供网络接入、分发、预置等服务。</strong></p>
+<p>​	（十）APP主办者、网络接入服务提供者、分发平台、智能终端生产企业应当建立健全违法违规信息监测和处置机制，发现法律、  		行政法规禁止发布或者传输的信息，应当立即停止传输该信息，采取消除等处置措施，防止信息扩散，保存有关记录，并向电信		主管部门报告，依据电信主管部门要求进行处置。</p>
+</blockquote>
+<p>大多数网民都把它误读为“白名单”“限制安装”等要求，其实并没有传闻中的那么可怕(不过还是建议持有谨慎乐观的态度)。我们不妨把新规和网站备案要求做个对比，即现行<a target="_blank" rel="noopener" href="https://wap.miit.gov.cn/zcfg/xxtxl/art/2009/art_8237334014394e93886c986170bb31c9.html">《非经营性互联网信息服务备案管理办法》</a>的相关条文：</p>
+<blockquote>
+<p>第五条 </p>
+<p>在中华人民共和国境内提供非经营性互联网信息服务，应当依法履行备案手续。</p>
+<p>未经备案，不得在中华人民共和国境内从事非经营性互联网信息服务。</p>
+<p>本办法所称在中华人民共和国境内提供非经营性互联网信息服务，是指在中华人民共和国境内的组织或个人利用通过互联网域名访问的网站或者利用仅能通过互联网 IP 地址访问的网站，提供非经营性互联网信息服务。</p>
+</blockquote>
+<p>然而现状有些许不同：只要你的服务器架设在境外，就不受工信部的规定监管，即使不备案也不会被轻易屏蔽(除非你发布或传播了非法信息)。因此，《通知》第（一）（十）两条的规定不会造成什么实质性影响。</p>
+<p>不过，我们或许要针对《通知》第九条作出应对。我个人认为，第九条的<strong>三个主体与三个义务是一一对应的</strong>，在构想应对方案时也是基于这个前提，以及上文的现状说明。</p>
+<p>由于Web平台的存在，应用不必通过分发平台进行分发；无法预置应用也和用户自行安装应用没有关系。唯一有些争议的地方就是对“网络接入服务提供者”的要求，然而，在HTTPS普及的今天，运营商完全无法获知应用的包名；何况很多人指出，“网络接入服务提供者”特指为App提供服务器的运营方。<strong>因此，我们只需要担心智能终端生产企业作出更加过分的限制并加以应对。</strong></p>
+<p>在开始之前，顺便建议各位读者对自己的设备环境作出调整。无论对智能手机还是PC，这些调整对更加安全、隐秘的网页浏览都有好处：</p>
+<p>(1)使用支持SSL&#x2F;TLS应用，禁用TLS1.0&#x2F;1.1等过时协议；</p>
+<p>(2)尽量避免使用国内服务商的DNS，如确实无法避免，打开设备上的DoH(DNS over HTTPS)功能开关；</p>
+<p>(3)不要使用身份不明的网络代理；</p>
+<p>(4)不要安装“国家反诈中心”应用；如必要，将其控制在非日常使用的沙箱环境中运行；</p>
+<p>(5)检查系统的根证书设置（Windows系统相关设置见下图，智能终端可忽略此步），避免使用CNNIC等不受信任机构颁发的证书。</p>
+<img src="/AppAudit/屏幕截图(3020).png" srcset="/img/loading.gif" lazyload style="zoom: 67%;">
+
+<h3 id="怎么应对新规？"><a href="#怎么应对新规？" class="headerlink" title="怎么应对新规？"></a>怎么应对新规？</h3><p>这里仅提供一些应对思路与相关信息，不对具体步骤作出指导。</p>
+<h4 id="Huawei-vivo设备"><a href="#Huawei-vivo设备" class="headerlink" title="Huawei&#x2F;vivo设备"></a>Huawei&#x2F;vivo设备</h4><p>建议更换设备，或谨慎更新到新规后发布的固件版本。这些设备内建无法关闭的检查功能，或者无法离线安装应用。并且这些设备无法通过常规手段获得系统权限，一旦新规正式推行，存在严重的后门隐患——你的应用可能随时被切断网络权限，包名信息可能在不知情的情况下被上报到监管机构。同时，这些设备内建有臭名昭著的<strong>腾讯天御组件</strong>（详见后文）且无法控制其联网，已经有证据表明，该组件会监听用户的输入、安装等操作，并连接位于广东的不明IDC机房进行上报。</p>
+<p>Huawei设备已有存在后门的证据，可参见以下链接：</p>
+<p>【相关链接——Harmony OS的后门】<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/524364957/answer/3128218138">https://www.zhihu.com/question/524364957/answer/3128218138</a> </p>
+<h4 id="Mi-Redmi设备"><a href="#Mi-Redmi设备" class="headerlink" title="Mi&#x2F;Redmi设备"></a>Mi&#x2F;Redmi设备</h4><p>众所周知，粗粮设备非常喜欢跟进合规性要求——尽管这不是件好事。MIUI的“应用包管理组件”存在后门——该组件会检查用户安装的应用是否合规。在联网状态下，已有多位试图安装数字货币钱包、境外社交平台以及其他非法应用<u>(甚至是合法应用，比如5G开关和GCam)</u>的用户被禁止安装。同时，MIUI安全组件同样内建<strong>腾讯天御组件</strong>，其监控甚至相较上文提到的Huawei&#x2F;vivo设备更胜一筹——已有用户因为在小米设备上使用境外支付被请喝茶。</p>
+<p>【相关链接——Mi&#x2F;Redmi存在后门的证据】 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/524364957/answer/3089519980">https://www.zhihu.com/question/524364957/answer/3089519980</a> </p>
+<p>不过幸运的是，你可以提前备份自己的数据，然后耐心地等待168小时——这时，你就可以解开OEM锁，然后刷入TWRP和Magisk以获取设备ROOT权限，并<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/524364957/answer/3093449683">安装Xposed模块来关闭Antifraud组件</a>（这个组件的名称颇有讽刺意味——它自身就是最大的安全隐患）。</p>
+<h4 id="其他运行中国大陆版固件的国产品牌设备"><a href="#其他运行中国大陆版固件的国产品牌设备" class="headerlink" title="其他运行中国大陆版固件的国产品牌设备"></a>其他运行中国大陆版固件的国产品牌设备</h4><p>虽然目前没有确凿证据证明后门存在，但建议你时刻保持警惕并作出必要的应对措施——比如关闭杀毒软件、禁用系统安全组件的联网。你应该谨慎购买和使用宣称具有“全链路反诈”功能的设备，这些设备更可能泄露用户隐私或跟进监管要求。</p>
+<h4 id="运行中国大陆版固件的Samsung设备"><a href="#运行中国大陆版固件的Samsung设备" class="headerlink" title="运行中国大陆版固件的Samsung设备"></a>运行中国大陆版固件的Samsung设备</h4><p>这类设备内建<strong>腾讯天御组件</strong>，但目前还没有存在后门的记录。不过由于Samsung设备的特性，可以使用Adhell3应用（<a href="./adhell.zip">点此下载</a> ）</p>
+<p>来控制系统组件的联网权限。完成安装后打开应用，然后按下图设置即可。</p>
+<p><img src="/AppAudit/Screenshot_20230813_170622_Adhell3.jpg" srcset="/img/loading.gif" lazyload style="zoom: 25%;"><img src="/AppAudit/Screenshot_20230813_170810_Adhell3.jpg" srcset="/img/loading.gif" lazyload alt="Screenshot_20230813_170810_Adhell3" style="zoom: 25%;"></p>
+<h4 id="运行中国大陆版固件的其他国际品牌Android设备-运行海外版固件的国际品牌Android设备"><a href="#运行中国大陆版固件的其他国际品牌Android设备-运行海外版固件的国际品牌Android设备" class="headerlink" title="运行中国大陆版固件的其他国际品牌Android设备||运行海外版固件的国际品牌Android设备"></a>运行中国大陆版固件的其他国际品牌Android设备||运行海外版固件的国际品牌Android设备</h4><p>这些品牌向来尊重用户隐私，即使有后门（可能为境外监管机构所用）也不会导致你被找麻烦。</p>
+<h4 id="iOS设备"><a href="#iOS设备" class="headerlink" title="iOS设备"></a>iOS设备</h4><p><strong>Apple ID地区为“中国大陆”的iOS设备是不安全的设备！</strong></p>
+<p><strong>Apple ID地区为“中国大陆”的iOS设备是不安全的设备！</strong></p>
+<p><strong>Apple ID地区为“中国大陆”的iOS设备是不安全的设备！</strong></p>
+<p>如果你已经登入App Store，可以通过更改Apple ID的信息来实现更改地区。推荐更改地区为“美国”——这允许你选择“无”为付款方式。唯一有点困难的地方就是邮编验证，不过你可以使用<a target="_blank" rel="noopener" href="https://www.apple.com/retail/">一家苹果直营店的信息</a>完成验证。</p>
+<h4 id="关于腾讯天御组件-Android-Harmony-OS"><a href="#关于腾讯天御组件-Android-Harmony-OS" class="headerlink" title="关于腾讯天御组件(Android&#x2F;Harmony OS)"></a>关于腾讯天御组件(Android&#x2F;Harmony OS)</h4><p>相关动态链接库文件为libTmsdk-[version]-mfr.so。组件会监视用户设备中是否有非法或敏感内容，并将检测结果与手机号码等个人信息一同上报。如果你的设备中并没有安装QQ，且内部存储中出现了</p>
+<p>&#x2F;storage&#x2F;emulated&#x2F;0&#x2F;DCIM&#x2F;.tmfs</p>
+<p>&#x2F;storage&#x2F;emulated&#x2F;0&#x2F;turing.dat</p>
+<p>等文件，请留意是否有可疑软件包含了腾讯天御组件(可用LibChecker等工具查看)。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82%E8%B0%88/" class="category-chain-item">杂谈</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A7%BB%E5%8A%A8%E4%BA%92%E8%81%94%E7%BD%91/" class="print-no-link">#移动互联网</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>关于“App备案制”的个人理解</div>
+      <div>https://sgong-0224.github.io/AppAudit/</div>
+    </div>
+    <div class="license-meta">
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="ND - 禁止演绎">
+                    <i class="iconfont icon-nd"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'sgong-0224/GH_Pages_Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <div>Powered by: <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量：
+        <span id="busuanzi_value_site_pv"></span>
+         
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数：
+        <span id="busuanzi_value_site_uv"></span>
+         
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

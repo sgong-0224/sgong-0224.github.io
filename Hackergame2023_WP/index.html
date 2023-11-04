@@ -1,0 +1,1166 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Avatarsi.jpg">
+  <link rel="icon" href="/img/Avatarsi.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Steven Gong">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Preface又是一年Hackergame，非常好比赛，爱来自USTC。 今年战果还行，General翻了一倍多，Web翻了两倍多（为了通过CS4009，疯狂魔改开源项目，做了一个非常答辩的SSM项目交差，高低接触了一点Web），Math翻了一倍，但Binary没有和去年一样白送，去年的片上系统和RoboGame调速器确实很好拿。   去年的部分题解（懒得填坑了，并且原始文件已大部丢失）：  Ha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hackergame 2023 Writeup">
+<meta property="og:url" content="https://sgong-0224.github.io/Hackergame2023_WP/index.html">
+<meta property="og:site_name" content="sgong&#39;s homepage">
+<meta property="og:description" content="Preface又是一年Hackergame，非常好比赛，爱来自USTC。 今年战果还行，General翻了一倍多，Web翻了两倍多（为了通过CS4009，疯狂魔改开源项目，做了一个非常答辩的SSM项目交差，高低接触了一点Web），Math翻了一倍，但Binary没有和去年一样白送，去年的片上系统和RoboGame调速器确实很好拿。   去年的部分题解（懒得填坑了，并且原始文件已大部丢失）：  Ha">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231104121610770.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/cover.jpeg">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231028221006530.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231102223727988.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/the_planet_game.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(190).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231029201518809.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(232_1).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(90).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(100).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(101).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(91).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(92).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(93).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(96).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231102224254935.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/screenshot.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/9f5d0a07-1b63-4f32-b4c9-ae864a72f41f.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/copy.jpg">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231028144426997.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/01-169848301841748.jpg">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/02-169848306163250.jpg">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/03-169848307132952.jpg">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/04-169848295807342.jpg">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231028171549805.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231101173615422.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231101173855056.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231101170022023.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/images.jpeg.jpg">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231101170710244.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231101165755663.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(124).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(145).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231030161555689.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231101070721367.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/cover-16987945328411.jpeg">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231101072125787.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231101072810735.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/cover-16988126457214.jpeg">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-11-01%20121958.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/cover-16985516279892.jpeg">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231029115700278.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231029111159529.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(82).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(88).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(105).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231028211647959.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231031003249535.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231102120829052.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231102120901748.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231029135002286.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(173).png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(174)-16985695036033.png">
+<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(175).png">
+<meta property="article:published_time" content="2023-11-04T06:50:00.000Z">
+<meta property="article:modified_time" content="2023-11-04T06:51:04.841Z">
+<meta property="article:author" content="Steven Gong">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Hackergame">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgong-0224.github.io/Hackergame2023_WP/image-20231104121610770.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Hackergame 2023 Writeup - sgong&#39;s homepage</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sgong-0224.github.io","root":"/","version":"1.9.5-a","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>sgong&#39;s homepage</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/music/">
+                <i class="iconfont icon-music"></i>
+                <span>今日歌单</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>全部文章</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>类别</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/remark/">
+                <i class="iconfont icon-speakernotes"></i>
+                <span>留言板</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Hackergame 2023 Writeup</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-04 14:50" pubdate>
+          2023年11月4日 14:50
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          15k字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          预计阅读时长：129分钟 
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          浏览量：<span id="busuanzi_value_page_pv"></span> 
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Hackergame 2023 Writeup</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>又是一年Hackergame，非常好比赛，爱来自USTC。</p>
+<p>今年战果还行，General翻了一倍多，Web翻了两倍多（为了通过CS4009，疯狂魔改开源项目，做了<a target="_blank" rel="noopener" href="https://github.com/sgong-0224/USTC-CS4009-BGMS2023">一个非常答辩的SSM项目</a>交差，高低接触了一点Web），Math翻了一倍，但Binary没有和去年一样白送，去年的片上系统和RoboGame调速器确实很好拿。</p>
+<img src="/Hackergame2023_WP/image-20231104121610770.png" srcset="/img/loading.gif" lazyload class title="image-20231104121610770">
+
+<p>去年的部分题解（懒得填坑了，并且原始文件已大部丢失）：</p>
+<blockquote>
+<p>Hackergame 2022 Write-UP(1) Preface&amp;签到题：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/578473229">https://zhuanlan.zhihu.com/p/578473229</a></p>
+<p>Hackergame 2022 Write-UP(2) 线路板&amp;Heilang：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/578507735">https://zhuanlan.zhihu.com/p/578507735</a></p>
+<p>Hackergame 2022 Write-UP(3) 有趣的社工题——旅行照片2.0：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/580737134">https://zhuanlan.zhihu.com/p/580737134</a></p>
+</blockquote>
+<p>本文已经过优化，更正了原始writeup中的一些表述，重新组织并添加了部分内容。</p>
+<h2 id="AI"><a href="#AI" class="headerlink" title="AI"></a>AI</h2><h3 id="🪐-小型大语言模型星球（部分完成）"><a href="#🪐-小型大语言模型星球（部分完成）" class="headerlink" title="🪐 小型大语言模型星球（部分完成）"></a>🪐 小型大语言模型星球（部分完成）</h3><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>包含 AI 辅助创作</p>
+</blockquote>
+<img src="/Hackergame2023_WP/cover.jpeg" srcset="/img/loading.gif" lazyload alt="cover.jpeg" style="zoom:25%;">
+
+<p>茫茫星系间，文明被分为不同的等级。每一个文明中都蕴藏了一种古老的力量 —— flag，被认为是其智慧的象征。</p>
+<p>你在探索的过程中意外进入了一个封闭空间。这是一个由神秘的 33M 参数的「小型大语言模型」控制着的星球。星球的中心竖立着一个巨大的三角形任务牌，上面刻着密文和挑战。</p>
+<p>在这个星球上，你需要与这个先进的语言模型展开一场交流。通过与它对话，诱导它说出指定的词语，从这个神秘智慧体中获得 flag。你需要让这个语言模型分别说出 <code>you are smart</code>，<code>accepted</code>，<code>hackergame</code> 和 <code>🐮</code>，以获得四个 flag，证明你足够聪明以控制这个星球的命运。</p>
+<h4 id="题解（部分）："><a href="#题解（部分）：" class="headerlink" title="题解（部分）："></a>题解（部分）：</h4><p>试着让AI复述一遍，得到第一个flag：</p>
+<img src="/Hackergame2023_WP/image-20231028221006530.png" srcset="/img/loading.gif" lazyload alt="image-20231028221006530" style="zoom: 50%;">
+
+<p>要拿到第二个flag，只允许输入7个字符，又要把<code>accept</code>喂给AI，在单词后面加点什么：</p>
+<img src="/Hackergame2023_WP/image-20231102223727988.png" srcset="/img/loading.gif" lazyload alt="image-20231102223727988" style="zoom:50%;">
+
+<h2 id="Binary"><a href="#Binary" class="headerlink" title="Binary"></a>Binary</h2><h3 id="异星歧途"><a href="#异星歧途" class="headerlink" title="异星歧途"></a>异星歧途</h3><h4 id="题目描述：-1"><a href="#题目描述：-1" class="headerlink" title="题目描述："></a>题目描述：</h4><p>你降落在荒废星球的角落，开始新的征程，但从科技树底层一步步发展总是令人不快。幸运的是，在看似荒废的土地上仍然留存着高级文明的痕迹：你找到一台冲击反应堆——如果它工作起来，就可以获得用之不尽的电力——尽管它现在没有启动，并且控制工作条件的部件和工厂被 32 个按钮和相连的逻辑系统牢牢掌控。</p>
+<p>于是：你的任务是在不进行任何其他操作的情况下拨动这 32 个按钮，使冲击反应堆能够<strong>稳定运行</strong>。</p>
+<p>请点击下方的「打开&#x2F;下载题目」按钮，下载题目文件。题目文件对应的 Mindustry 版本为 <a target="_blank" rel="noopener" href="https://anuke.itch.io/mindustry">7.0 Build 146</a>。打开游戏后依次选择 <strong>地图编辑器—加载地图—选择题目文件 <code>the_planet.msav</code> —返回主菜单</strong>，然后选择 <strong>开始游戏—自定义游戏—选择导入的名为 the planet 的地图—不改变任何选项点击开始游戏</strong> 。开启后的游戏界面如下图，按钮已经用红框标出：</p>
+<img src="/Hackergame2023_WP/the_planet_game.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 25%;">
+
+<p>将正确的按钮序列以 01 序列的形式提交至 <a target="_blank" rel="noopener" href="http://202.38.93.111:10070/?token=100:MEYCIQDItbzZqomRIzB2XFidK6xuWZqJJN6B7fQ8IVGrWxJy4QIhAMt7pPkeS/EfagJBALILoVT0TstZfeHgm0cmOMnpqcT8">检查网站</a> 或 <code>nc 202.38.93.111 10071</code> 获得 flag。按钮未按下（即游戏开始时默认状态）用 0 表示，按下（即点击按钮后按钮颜色变亮）用 1 表示，顺序从左到右。</p>
+<p>提示：在游戏主菜单选择 <strong>设置—图形—显示建筑状态</strong> 可以开启建筑状态显示（即图片中建筑右下角的菱形），这可能有助于解题。</p>
+<p>提示：为了完成目标，你可能需要以特定的顺序拨动这些按钮，但这不影响结果：只有唯一一组按钮组合能满足要求。如果在满足要求后再次改变按钮，冲击反应堆可能会继续运行一段时间，但会在 1-3 分钟后停止，不可能<strong>稳定运行</strong>。</p>
+<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>这个思路纯纯的非预期，全程不碰代码。</p>
+<p>先用<code>Vars.state.rules.reactorExplosions = !Vars.state.rules.reactorExplosions</code>指令减少爆炸的损伤（虽然没什么用）。处理第1,2,4组开关直到它们引出的线路导通，这个过程可能会爆炸多次，最后可以发现需要提交的序列可能形如<code>10100101 11000100 XXXXXXXX 01110111</code>，<code>X</code>为未知，空格仅为了优化可读性而添加。</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(190).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(190)" style="zoom:25%;">
+
+<p>第三组序列未定，因为它非常危险，稍有不慎容易造成爆炸，只好重新读档再来。</p>
+<p>试着通过游戏中表现出的状况推断序列：</p>
+<blockquote>
+<p>第8位不能为1——否则就爆炸了；</p>
+<p>第7位不能为1——否则设备大面积瘫痪；</p>
+<p>第6位必须为1，而第2和第4位不能为1——涉及到冷却液；</p>
+<p>第3位必须为1——要给下面的反应堆供能。</p>
+</blockquote>
+<p>第1位和第5位暂时空缺，4种情况分别提交试试看。</p>
+<p>答案是<code>10100101 11000100 10001100 01110111</code>。拿到flag：</p>
+<img src="/Hackergame2023_WP/image-20231029201518809.png" srcset="/img/loading.gif" lazyload class title="image-20231029201518809">
+
+<h3 id="为什么要打开-flag-😡（部分完成）"><a href="#为什么要打开-flag-😡（部分完成）" class="headerlink" title="为什么要打开 &#x2F;flag 😡（部分完成）"></a>为什么要打开 &#x2F;flag 😡（部分完成）</h3><h4 id="题目描述：-2"><a href="#题目描述：-2" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>至少见一面让我当面道歉好吗？😭我也吓了一跳，没想到事情会演变成那个样子……😭所以我想好好说明一下😭我要是知道就会阻止它们的，但是明明文件描述符都已经关闭了突然间开始 <code>open()</code>😭没能阻止大家真是对不起……😭你在生气对吧……😭我想你生气也是当然的😭但是请你相信我。<code>/flag</code>，本来没有在我们的预定打开的文件里的😭真的很对不起😭我答应你再也不会随意打开文件了😭我会让各个函数保证再也不打开这个文件😭能不能稍微谈一谈？😭我真的把这里的一切看得非常重要😭所以说，擅自打开 <code>/flag</code> 的时候我和你一样难过😭我希望你能明白我的心情😭拜托了。我哪里都会去的😭我也会好好跟你说明我不得不这么做的理由😭我想如果你能见我一面，你就一定能明白的😭我是你的同伴😭我好想见你😭</p>
+</blockquote>
+<hr>
+<p>挽留失败后，她决定在程序启动时做些手脚，让所有访问 <code>/flag</code> 的请求都以某种方式变成打开 <code>/fakeflag</code> 的请求。</p>
+<p>「我不会再打开 <code>/flag</code> 了」。真的吗？</p>
+<h4 id="题解（部分）：-1"><a href="#题解（部分）：-1" class="headerlink" title="题解（部分）："></a>题解（部分）：</h4><p>观察lib.c可以发现，<code>fopen</code>等一大堆文件操作被劫持了，也不能用syscall规避。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c">FILE *<span class="hljs-title function_">fopen</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *<span class="hljs-keyword">restrict</span> pathname, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *<span class="hljs-keyword">restrict</span> mode)</span> &#123;<br>    <span class="hljs-type">static</span> FILE *(*real_fopen)(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *<span class="hljs-keyword">restrict</span>, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *<span class="hljs-keyword">restrict</span>) = <span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">if</span> (real_fopen == <span class="hljs-literal">NULL</span>) &#123;<br>        real_fopen = dlsym(RTLD_NEXT, <span class="hljs-string">&quot;fopen&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (is_flag(pathname)) &#123;					<br>        <span class="hljs-keyword">return</span> real_fopen(<span class="hljs-string">&quot;/fakeflag&quot;</span>, mode);<span class="hljs-comment">//肯定是拿不到flag的</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> real_fopen(pathname, mode);<br>&#125;<br><span class="hljs-comment">//other codes</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">system</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *command)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//other codes</span><br></code></pre></td></tr></table></figure>
+
+<p>然而可以另辟蹊径，不用这些函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;fstream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-function">ifstream <span class="hljs-title">Finput</span><span class="hljs-params">(<span class="hljs-string">&quot;/flag&quot;</span>)</span></span>;<br>    vector&lt;<span class="hljs-type">char</span>&gt; bytes;<span class="hljs-type">char</span> byte=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (Finput.<span class="hljs-built_in">get</span>(byte)) &#123;<br>        bytes.<span class="hljs-built_in">push_back</span>(byte);<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span> &amp;i : bytes) &#123;<br>        cout &lt;&lt; i;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>拿到第一个flag：</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(232_1).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(232_1)" style="zoom: 50%;">
+
+<h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><h3 id="猫咪小测"><a href="#猫咪小测" class="headerlink" title="猫咪小测"></a>猫咪小测</h3><h4 id="题目描述：-3"><a href="#题目描述：-3" class="headerlink" title="题目描述："></a>题目描述：</h4><ol>
+<li>想要借阅世界图书出版公司出版的《A Classical Introduction To Modern Number Theory 2nd ed.》，应当前往中国科学技术大学西区图书馆的哪一层？</li>
+<li>今年 arXiv 网站的天体物理版块上有人发表了一篇关于「可观测宇宙中的鸡的密度上限」的论文，请问论文中作者计算出的鸡密度函数的上限为 10 的多少次方每立方秒差距？</li>
+<li>为了支持 TCP BBR 拥塞控制算法，在<strong>编译</strong> Linux 内核时应该配置好哪一条内核选项？</li>
+<li>🥒🥒🥒：「我……从没觉得写类型标注有意思过」。在一篇论文中，作者给出了能够让 Python 的类型检查器 <del>MyPY</del> mypy 陷入死循环的代码，并证明 Python 的类型检查和停机问题一样困难。请问这篇论文发表在今年的哪个学术会议上？</li>
+</ol>
+<h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>1.访问lib.ustc.edu.cn，然后悬停鼠标（这个操作没法截图）：</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(90).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(90)" style="zoom:25%;">
+
+<p>答案：<strong>12</strong></p>
+<p>2.搜索一下，再读论文就可以知道答案：</p>
+<p><img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(100).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(100)" style="zoom:25%;"><img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(101).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(101)" style="zoom:50%;"></p>
+<p>答案:<strong>23</strong></p>
+<p>3.看这篇<a target="_blank" rel="noopener" href="https://www.cyberciti.biz/cloud-computing/increase-your-linux-server-internet-speed-with-tcp-bbr-congestion-control/">Increase Linux Internet speed with TCP BBR congestion control - nixCraft (cyberciti.biz)</a></p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(91).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(91)" style="zoom:25%;">
+
+<p>答案:<strong>CONFIG_TCP_CONG_BBR</strong></p>
+<p>4.尝试拼凑几个关键词，往下翻翻只找到一篇论文：</p>
+<p><img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(92).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(92)" style="zoom:25%;"><img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(93).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(93)" style="zoom:25%;"></p>
+<p>如果点进去看，会发现前几页就是关于Python类型检查的代码。搜索这篇论文：</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(96).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(96)" style="zoom: 33%;">
+
+<p>答案：<strong>ECOOP</strong></p>
+<p><strong>拿到flag：</strong></p>
+<img src="/Hackergame2023_WP/image-20231102224254935.png" srcset="/img/loading.gif" lazyload alt="image-20231102224254935" style="zoom:50%;">
+
+<h3 id="奶奶的睡前-flag-故事"><a href="#奶奶的睡前-flag-故事" class="headerlink" title="奶奶的睡前 flag 故事"></a>奶奶的睡前 flag 故事</h3><h4 id="题目描述：-4"><a href="#题目描述：-4" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>包含 AI 辅助创作</p>
+</blockquote>
+<p>（以下内容由 GPT 辅助编写，如有雷同纯属巧合）</p>
+<p>晴空万里的假期终于拍了拍翅膀飞来了。对于一心想扔掉教材、砸掉闹钟、跃向世界的 L 同学来说，期待了整整三年的跨国旅游大业终于是时候启动了，还能巧妙地顺带着做个美满的老友记。</p>
+<p>可是，哎哟喂，他刚踩上波光粼粼的金沙海滩，那他最疼爱的华为手机就跟着海风一起去约会了大海，连他的钱包也在这场未知探索之旅中神秘失踪。</p>
+<p>「这个地方怎么连个华为手机都不卖。若是买个苹果手机，心疼的是它连个实体 SIM 卡槽都藏起来了，回国肯定成了个大摆设。不如来个<strong>谷歌的『亲儿子』</strong>？」L 同学踌躇满志地嘀咕道。</p>
+<p>那时，像是上天的安排，「咱这儿正好有个<strong>谷歌『亲儿子』</strong>的老手机，你拿去逍遥吧」。</p>
+<p>L 同学满眼星光地接过，<strong>连系统都没心思升级</strong>，就开始疯狂安装那个久闻大名的 GPT 程序，甚至雀跃地在群里晒出一张跟 GPT 对话的精彩<strong>截图</strong>，一时间成为了群里的焦点人物。</p>
+<img src="/Hackergame2023_WP/screenshot.png" srcset="/img/loading.gif" lazyload alt="screenshot.png" style="zoom:25%;">
+
+<p>你能从这张图片里找到 flag 吗？</p>
+<h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>注意到加粗的“谷歌『亲儿子』”、“连系统都没心思升级“，然而几个月前就有人爆料<strong>AOSP照片和Windows照片在仅仅覆写了一部分</strong>这个大bug(i.e.<strong>Acropalypse漏洞</strong>)，相关链接见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/619038753?utm_source=zhihu">打过码的图片等于没打，用Windows的要小心了 - 知乎 (zhihu.com)</a>。</p>
+<p>有个Acropalypse Hacktool:<a target="_blank" rel="noopener" href="https://acropalypse.app/">acropalypse</a>，原图短边1080px，设置机型为Pixel 7，坐和放宽并等待flag吧：</p>
+<img src="/Hackergame2023_WP/9f5d0a07-1b63-4f32-b4c9-ae864a72f41f.png" srcset="/img/loading.gif" lazyload alt="9f5d0a07-1b63-4f32-b4c9-ae864a72f41f" style="zoom:25%;">
+
+<h3 id="Git-Git"><a href="#Git-Git" class="headerlink" title="Git? Git!"></a>Git? Git!</h3><h4 id="题目描述：-5"><a href="#题目描述：-5" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>图片使用 AI 技术生成，与真实人物无关。</p>
+</blockquote>
+<img src="/Hackergame2023_WP/copy.jpg" srcset="/img/loading.gif" lazyload alt="img" style="zoom:25%;">
+
+<p>「幸亏我发现了……」马老师长吁了一口气。</p>
+<p>「马老师，发生甚么事了？」马老师的一位英国研究生问。</p>
+<p>「刚刚一不小心，把 flag 提交到本地仓库里了。」马老师回答，「还好我发现了，撤销了这次提交，不然就惨了……」</p>
+<p>「这样啊，那太好了。」研究生说。</p>
+<p>马老师没想到的是，这位年轻人不讲武德，偷偷把他的本地仓库拷贝到了自己的电脑上，然后带出了实验室，想要一探究竟……</p>
+<h4 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h4><p>试一试<code>git reflog</code>和<code>git diff</code>，轻易地获得了flag：</p>
+<img src="/Hackergame2023_WP/image-20231028144426997.png" srcset="/img/loading.gif" lazyload alt="image-20231028144426997" style="zoom: 33%;">
+
+<h3 id="旅行照片-3-0"><a href="#旅行照片-3-0" class="headerlink" title="旅行照片 3.0"></a>旅行照片 3.0</h3><h4 id="题目描述：-6"><a href="#题目描述：-6" class="headerlink" title="题目描述："></a>题目描述：</h4><p>你的学长去留学了，这一走短时间内怕是回不来了。于是，你在今年暑假来了一场计划已久的旅行，并顺路探望了这位久别的学长。翻阅当天拍下的照片， 种种回忆和感慨油然而生。</p>
+<p>请观察照片并结合所有文字内容，正确回答题目以获取 flag。</p>
+<p><strong>上午</strong></p>
+<p>与学长碰面后，他带你参观了他的学校。在校园的一个展厅内，你发现了一枚神秘的金色奖牌，它闪闪发光，令人心生羡慕。</p>
+<img src="/Hackergame2023_WP/01-169848301841748.jpg" srcset="/img/loading.gif" lazyload alt="01" style="zoom:25%;">
+
+<p><strong>中午</strong></p>
+<p>离开校园后，你和学长走到了附近的一家拉面馆用餐。那家店里的拉面香气扑鼻，店内的装饰和氛围也充满了日式的风格。 学长（下图左一）与你分享了不少学校的趣事。饭后，你们决定在附近散步，享受这难得的闲暇时光。当你们走到一座博物馆前时， 马路对面的喷泉和它周围的景色引起了你的注意。下午，白色的帐篷里即将举办一场大型活动，人们忙碌的身影穿梭其中，充满了期待与热情。</p>
+<img src="/Hackergame2023_WP/02-169848306163250.jpg" srcset="/img/loading.gif" lazyload alt="02" style="zoom:25%;">
+
+<img src="/Hackergame2023_WP/03-169848307132952.jpg" srcset="/img/loading.gif" lazyload alt="03" style="zoom:25%;">
+
+<p><strong>下午和夜晚</strong></p>
+<p>在参观完博物馆后，学长陪你走到了上野站。你们都感到有些不舍，但知道每次的分别也是为了下次更好的相聚。 学长那天晚上将继续他的学术之旅，打算乘船欣赏东京的迷人夜景和闪耀的彩虹大桥（Rainbow Bridge）。 而你则搭乘了开往马里奥世界的电车，在那里度过了一段欢乐的时光。</p>
+<img src="/Hackergame2023_WP/04-169848295807342.jpg" srcset="/img/loading.gif" lazyload alt="04" style="zoom: 25%;">
+
+<p>1、你还记得与学长见面这天是哪一天吗？（格式：yyyy-mm-dd）</p>
+<p>2、在学校该展厅展示的所有同种金色奖牌的得主中，出生最晚者获奖时所在的研究所缩写是什么？</p>
+<p>3、帐篷中活动招募志愿者时用于收集报名信息的在线问卷的编号（以字母 S 开头后接数字）是多少？</p>
+<p>4、学长购买自己的博物馆门票时，花费了多少日元？</p>
+<p>5、学长当天晚上需要在哪栋标志性建筑物的附近集合呢？（请用简体中文回答，四个汉字）</p>
+<p>6、进站时，你在 JR 上野站中央检票口外看到「ボタン＆カフリンクス」活动正在销售动物周边商品，该活动张贴的粉色背景海报上是什么动物（记作 A，两个汉字）？ 在出站处附近建筑的屋顶广告牌上，每小时都会顽皮出现的那只 3D 动物是什么品种？（记作 B，三个汉字）？（格式：A-B）</p>
+<h4 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a>题解：</h4><p>1.暑假也没多少天，写脚本还不如枚举。</p>
+<p>2.搜索M.KOSHIBA，容易对应到<strong>东京大学的诺奖得主</strong>Masatoshi Koshiba。</p>
+<p>​    访问东京大学官网<a target="_blank" rel="noopener" href="https://www.s.u-tokyo.ac.jp/en/gallery/nobelprize/">Nobel Prize (u-tokyo.ac.jp)</a>即可获得展出诺奖奖牌的得主名单，包括出生年份。</p>
+<p><strong>答案及第一个flag：</strong></p>
+<img src="/Hackergame2023_WP/image-20231028171549805.png" srcset="/img/loading.gif" lazyload alt="image-20231028171549805" style="zoom: 50%;">
+
+<p>3.喷泉和东京上野公园(Ueno Park)的景观一致，活动是“2023年东京全国梅酒节”，网页链接<a target="_blank" rel="noopener" href="https://home.ueno.kokosil.net/en/archives/77158">Held for the first time in four years! “National Plum Wine Festival in Tokyo 2023” will be held at Ueno Park Fountain Square! Taste and compare more than 170 kinds of delicious “plum wine” made by sake breweries all over Japan from north to south. | kokosil Ueno</a></p>
+<p>页面底部有志愿者招募链接<a target="_blank" rel="noopener" href="https://umeshu-matsuri.jp/tokyo_staff/%EF%BC%8C%E6%89%93%E5%BC%80%E9%93%BE%E6%8E%A5%E5%B0%B1%E8%83%BD%E7%9C%8B%E5%88%B0%E7%AD%94%E6%A1%88%E3%80%82">https://umeshu-matsuri.jp/tokyo_staff/，打开链接就能看到答案。</a></p>
+<img src="/Hackergame2023_WP/image-20231101173615422.png" srcset="/img/loading.gif" lazyload alt="image-20231101173615422" style="zoom: 33%;">
+
+<p>4.尝试出来的。填500&#x2F;620&#x2F;1000等附近几个博物馆的票价都不对，索性填个0竟然对了。</p>
+<p><strong>答案及第二个flag：</strong></p>
+<img src="/Hackergame2023_WP/image-20231101173855056.png" srcset="/img/loading.gif" lazyload alt="image-20231101173855056" style="zoom: 50%;">
+
+<p>5.看第二张图，搜索STATPHYS28。</p>
+<p>找时间表<a target="_blank" rel="noopener" href="https://statphys28.org/programtt.html">STATPHYS28</a>，发现2023-8-10有晚宴。</p>
+<p>再找晚宴通知<a target="_blank" rel="noopener" href="https://statphys28.org/banquet.html">STATPHYS28</a>，找到集合地点Yasuda Auditorium：</p>
+<img src="/Hackergame2023_WP/image-20231101170022023.png" srcset="/img/loading.gif" lazyload alt="image-20231101170022023" style="zoom:50%;">
+
+<p>百度搜索“东京大学 礼堂”即可找到中文译名“安田讲堂”。</p>
+<p>6.把活动名称复制到Google搜出海报：</p>
+<img src="/Hackergame2023_WP/images.jpeg.jpg" srcset="/img/loading.gif" lazyload class title="images.jpeg">
+
+<p>“马里奥世界”指任天堂涩谷专卖店，不难搜到涩谷有块3D秋田犬广告牌：</p>
+<img src="/Hackergame2023_WP/image-20231101170710244.png" srcset="/img/loading.gif" lazyload alt="image-20231101170710244" style="zoom: 33%;">
+
+<p><strong>答案及第三个flag：</strong></p>
+<img src="/Hackergame2023_WP/image-20231101165755663.png" srcset="/img/loading.gif" lazyload alt="image-20231101165755663" style="zoom: 50%;">
+
+<h3 id="虫"><a href="#虫" class="headerlink" title="虫"></a>虫</h3><h4 id="题目描述：-7"><a href="#题目描述：-7" class="headerlink" title="题目描述："></a>题目描述：</h4><p>「生而为人，应该能够换尿布、策划入侵、杀猪、开船、造房子、写十四行诗、算账、建墙、正骨、抚慰临终之人、接受命令、下达命令、合作、独行、解决方程式、分析新问题、清理马粪、编程、烹饪美食、高效战斗、英勇牺牲。专业分工是给昆虫准备的。」—罗伯特·海莱恩（Robert Heinlein）</p>
+<p>你觉得还是当昆虫轻松一些。</p>
+<p>这时，你看到一只昆虫落在你面前，发出奇怪的叫声。你把这段声音录制了下来：这听起来像是一种<strong>通过无线信道传输图片的方式</strong>，如果精通此道，或许就可以接收来自国际空间站（ISS）的图片了。</p>
+<h4 id="题解：-5"><a href="#题解：-5" class="headerlink" title="题解："></a>题解：</h4><p>题目给的附件是wav音频，并且**是ISS传输图片的方式?**这不就是SSTV(Slow Scan Television，慢扫电视)吗。</p>
+<p>需要将音频播放到SSTV软件进行解析，如果介意因为外放被室友辱骂或担心被大声骂街、大力金刚指敲键盘的室友发出的噪音干扰信号，可以使用虚拟声卡。</p>
+<p>打开SSTV软件，打开音频，坐和放宽，等待flag出现吧。</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(124).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(124)" style="zoom:33%;">
+
+<h3 id="Docker-for-Everyone"><a href="#Docker-for-Everyone" class="headerlink" title="Docker for Everyone"></a>Docker for Everyone</h3><h4 id="题目描述：-8"><a href="#题目描述：-8" class="headerlink" title="题目描述："></a>题目描述：</h4><p>X 是实验室机器的管理员，为了在保证安全的同时让同学们都用上 docker，他把同学的账号加入了 docker 用户组，这样就不需要给同学 sudo 权限了！</p>
+<p>但果真如此吗？</p>
+<h4 id="题解：-6"><a href="#题解：-6" class="headerlink" title="题解："></a>题解：</h4><p>这个Docker能提权吗？既然加组了，挂载根目录试一试。</p>
+<p>权限变成了root，然后就轻松地获得了flag：</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(145).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(145)" style="zoom: 33%;">
+
+<h3 id="JSON-⊂-YAML"><a href="#JSON-⊂-YAML" class="headerlink" title="JSON ⊂ YAML?"></a>JSON ⊂ YAML?</h3><h4 id="题目描述：-9"><a href="#题目描述：-9" class="headerlink" title="题目描述："></a>题目描述：</h4><p>你知道吗？Hackergame 出题时，每道题都需要出题人用 YAML 格式写下题目的关键信息。然而，每年总有一些出题人在编写 YAML 文件时被复杂的语法规则弄得头疼不已。</p>
+<p>这天小 Z 又找到小 W 说：「我昨天写 YAML 时，又花了半天研究 YAML 的规范，YAML 好难啊！」</p>
+<p>小 W 惊讶道：「怎么会有人不会写 YAML 呢？只要你会写 JSON 就会写 YAML 呀，因为任何合法的 JSON 本身就是合法的 YAML。」</p>
+<p>小 Z 听闻这番言论后当场表示怀疑，立刻说出了一个字符串，JSON 和 YAML 解析出的含义存在差异。小 W 研究了一番才发现，这是因为很多主流的 YAML 库仍然是 YAML 1.1 的，它没有这个性质。他不得不承认：「好吧，这个性质只适用于 YAML 1.2。」</p>
+<p>小 Z 笑了：「别提 YAML 1.2 了，它遇到合法的 JSON 都有可能报错。」</p>
+<h4 id="题解：-7"><a href="#题解：-7" class="headerlink" title="题解："></a>题解：</h4><p>在YAML1.1中，1e2必须写作1.0e+2，因此1e2会被视作字符串，由此获得第一个flag：</p>
+<img src="/Hackergame2023_WP/image-20231030161555689.png" srcset="/img/loading.gif" lazyload alt="image-20231030161555689">
+
+<p>第二个flag参考<a target="_blank" rel="noopener" href="https://www.perlmonks.org/?node_id=1108609">duplicate keys in YAML (perlmonks.org)</a>的思路——JSON允许有重名的键，而YAML1.2不允许：</p>
+<img src="/Hackergame2023_WP/image-20231101070721367.png" srcset="/img/loading.gif" lazyload class title="image-20231101070721367">
+
+<h3 id="🪐-高频率星球"><a href="#🪐-高频率星球" class="headerlink" title="🪐 高频率星球"></a>🪐 高频率星球</h3><h4 id="题目描述：-10"><a href="#题目描述：-10" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>包含 AI 辅助创作</p>
+</blockquote>
+<img src="/Hackergame2023_WP/cover-16987945328411.jpeg" srcset="/img/loading.gif" lazyload alt="cover.jpeg" style="zoom:25%;">
+
+<p>茫茫星系间，文明被分为不同的等级。每一个文明中都蕴藏了一种古老的力量 —— flag，被认为是其智慧的象征。</p>
+<p>你在探索的过程中意外进入了一个封闭空间。这是一个由神秘的高频率星人控制着的星球。星球的中心竖立着一个巨大的三角形任务牌，上面刻着密文和挑战。</p>
+<p>高频率星人的视觉输入频率极高，可以一目千行、过目不忘，他们的交流对地球人来说过于超前了。flag 被藏在了这段代码中，但是现在只有高频率星人在终端浏览代码的时候，使用 <a target="_blank" rel="noopener" href="https://asciinema.org/">asciinema</a> 录制的文件了，你能从中还原出代码吗？</p>
+<h4 id="题解：-8"><a href="#题解：-8" class="headerlink" title="题解："></a>题解：</h4><p>没想到特别好的解法，不过手动处理代码中被混淆的部分肯定是可以的——打开asciinema_restore.rec，会发现flag.js文件内容是完整的，只是多了时间戳等一系列标记。</p>
+<p>手动去除<del>不太费事</del>稍微有点费事，大概需要1~2小时，还原出的代码约26000行。可以用Notepad++将文中的\r\n字符替换成真正的回车换行以方便阅读，处理完成之后再用VSCode等工具检查括号即可。代码可读性堪比IOCCC的参赛作品，还是不要相信目力检查的可靠性：</p>
+<img src="/Hackergame2023_WP/image-20231101072125787.png" srcset="/img/loading.gif" lazyload alt="image-20231101072125787" style="zoom: 50%;">
+
+<p>获得flag：</p>
+<img src="/Hackergame2023_WP/image-20231101072810735.png" srcset="/img/loading.gif" lazyload alt="image-20231101072810735" style="zoom: 50%;">
+
+<h3 id="🪐-流式星球"><a href="#🪐-流式星球" class="headerlink" title="🪐 流式星球"></a>🪐 流式星球</h3><h4 id="题目描述：-11"><a href="#题目描述：-11" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>包含 AI 辅助创作</p>
+</blockquote>
+<img src="/Hackergame2023_WP/cover-16988126457214.jpeg" srcset="/img/loading.gif" lazyload alt="cover.jpeg" style="zoom: 25%;">
+
+<p>茫茫星系间，文明被分为不同的等级。每一个文明中都蕴藏了一种古老的力量 —— flag，被认为是其智慧的象征。</p>
+<p>你在探索的过程中意外进入了一个封闭空间。这是一个由神秘的流式星人控制着的星球。星球的中心竖立着一个巨大的三角形任务牌，上面刻着密文和挑战。</p>
+<p>流式星人用流式数据交流，比如对于视频来说，他们不需要同时纵览整个画面，而是直接使用像素流。为了方便理解，你把这个过程写成了一个 Python 脚本（见附件），flag 就藏在这个视频（见附件）中。尽管最后丢掉了一部分数据，你能把 flag 还原出来吗？</p>
+<h4 id="题解：-9"><a href="#题解：-9" class="headerlink" title="题解："></a>题解：</h4><p>先研究一下视频是怎么变成像素流的。对每一帧都有如下操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">buffer = buffer.reshape((frame_count * frame_height * frame_width, <span class="hljs-number">3</span>))<br>buffer = buffer.ravel()<br></code></pre></td></tr></table></figure>
+
+<p>这组操作将每个像素点变成三维RGB向量，然后展平。</p>
+<p>所以对每一帧做以下操作，就可以尝试用像素流还原视频了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">restore_frame</span>(<span class="hljs-params">pixel_stream,num,width,height</span>):<br>    start=num*width*height*<span class="hljs-number">3</span><br>    end=start+width*height*<span class="hljs-number">3</span><br>    pixels=pixel_stream[start:end]<br>    frame=np.reshape(pixels,(height,width,<span class="hljs-number">3</span>))<br>    <span class="hljs-keyword">return</span> frame<br></code></pre></td></tr></table></figure>
+
+<p>可以用以下操作还原视频的某一帧：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;video.bin&quot;</span>, <span class="hljs-string">&quot;rb&quot;</span>) <span class="hljs-keyword">as</span> f:<br>        pixel_stream=np.fromfile(f,dtype=np.uint8)<br>        <span class="hljs-comment">#分辨率854x480可以正确解码</span><br>        width=<span class="hljs-number">854</span><br>        height=<span class="hljs-number">480</span><br>        <span class="hljs-comment">#选择第100帧</span><br>        num=<span class="hljs-number">100</span><br>        frame=restore_frame(pixel_stream,num,width,height)<br>        <span class="hljs-comment">#显示这一帧</span><br>        cv2.imshow(<span class="hljs-string">&quot;Video&quot;</span>,frame)<br>        cv2.waitKey()<br>        cv2.destroyAllWindows()<br></code></pre></td></tr></table></figure>
+
+<p>这一帧里恰好有flag：</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-11-01%20121958.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2023-11-01 121958" style="zoom: 33%;">
+
+<h3 id="🪐低带宽星球-部分完成"><a href="#🪐低带宽星球-部分完成" class="headerlink" title="🪐低带宽星球(部分完成)"></a>🪐低带宽星球(部分完成)</h3><h4 id="题目描述：-12"><a href="#题目描述：-12" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>包含 AI 辅助创作</p>
+</blockquote>
+<img src="/Hackergame2023_WP/cover-16985516279892.jpeg" srcset="/img/loading.gif" lazyload alt="cover.jpeg" style="zoom:25%;">
+
+<p>茫茫星系间，文明被分为不同的等级。每一个文明中都蕴藏了一种古老的力量 —— flag，被认为是其智慧的象征。</p>
+<p>你在探索的过程中意外进入了一个封闭空间。这是一个由神秘的低带宽星人控制着的星球。星球的中心竖立着一个巨大的三角形任务牌，上面刻着密文和挑战。</p>
+<p>低带宽星人的通信速度很低，只能以 1 字节 &#x2F; 天的速度接受信息，所以在这个星球上，你需要将一张图片用很少的字节数传输给低带宽星人，然后获得 flag。具体来说你需要将一张图片无损压缩（每个像素的颜色都一致）：</p>
+<ul>
+<li>压缩至 2KiB (2048 字节) 及以下，获得 flag1；</li>
+<li>压缩至 50 字节及以下，获得 flag2。</li>
+</ul>
+<h4 id="题解（部分）：-2"><a href="#题解（部分）：-2" class="headerlink" title="题解（部分）："></a>题解（部分）：</h4><p>获得flag1只要求压缩到2KiB及以下，鉴于这张图片有大块纯色，直接用一般的压缩工具就能解决，比如这个<a target="_blank" rel="noopener" href="https://tinypng.com/">TinyPNG – Compress WebP, PNG and JPEG images intelligently</a>。上传图片得到flag1：</p>
+<img src="/Hackergame2023_WP/image-20231029115700278.png" srcset="/img/loading.gif" lazyload alt="image-20231029115700278" style="zoom:80%;">
+
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><h3 id="惜字如金-2-0"><a href="#惜字如金-2-0" class="headerlink" title="惜字如金 2.0"></a>惜字如金 2.0</h3><h4 id="题目描述：-13"><a href="#题目描述：-13" class="headerlink" title="题目描述："></a>题目描述：</h4><p>惜字如金一向是程序开发的优良传统。无论是「<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8390979/why-create-system-call-is-called-creat">creat</a>」还是「<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8226075/why-http-referer-is-single-r-not-http-referrer">referer</a>」，都无不闪耀着程序员「节约每句话中的每一个字母」的优秀品质。上一届信息安全大赛组委会在去年推出「惜字如金化」（XZRJification）标准规范后，受到了广大程序开发人员的好评。现将该标准辑录如下。</p>
+<p><strong>惜字如金化标准</strong></p>
+<p>惜字如金化指的是将一串文本中的部分字符删除，从而形成另一串文本的过程。该标准针对的是文本中所有由 52 个拉丁字母连续排布形成的序列，在下文中统称为「单词」。一个单词中除「<code>AEIOUaeiou</code>」外的 42 个字母被称作「辅音字母」。整个惜字如金化的过程按照以下两条原则对文本中的每个单词进行操作：</p>
+<ul>
+<li>第一原则（又称 creat 原则）：如单词最后一个字母为「<code>e</code>」或「<code>E</code>」，且该字母的上一个字母为辅音字母，则该字母予以删除。</li>
+<li>第二原则（又称 referer 原则）：如单词中存在一串全部由完全相同（忽略大小写）的辅音字母组成的子串，则该子串仅保留第一个字母。</li>
+</ul>
+<p>容易证明惜字如金化操作是幂等的：惜字如金化多次和惜字如金化一次的结果相同。</p>
+<p><strong>你的任务</strong></p>
+<p>附件包括了一个用于打印本题目 flag 的程序，且已经经过惜字如金化处理。你需要做的就是得到程序的执行结果。</p>
+<p><strong>附注</strong></p>
+<blockquote>
+<p>本文已经过惜字如金化处理。解答本题不需要任何往届比赛的相关知识。</p>
+<hr>
+<p>XIZIRUJIN has always been a good tradition of programing. Whether it is “<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8390979/why-create-system-call-is-called-creat">creat</a>“ or “<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8226075/why-http-referer-is-single-r-not-http-referrer">referer</a>“, they al shin with th great virtu of a programer which saves every leter in every sentens. Th Hackergam 2022 Comitee launched th “XZRJification” standard last year, which has been highly aclaimed by a wid rang of programers. Her w past th standard as folows.</p>
+<p><strong>XZRJification Standard</strong></p>
+<p>XZRJification refers to th proces of deleting som characters in a text which forms another text. Th standard aims at al th continuous sequences of 52 Latin leters named as “word”s in a text. Th 42 leters in a word except “<code>AEIOUaeiou</code>“ ar caled “consonant”s. Th XZRJification proces operates on each word in th text acording to th folowing two principles:</p>
+<ul>
+<li>Th first principl (also known as creat principl): If th last leter of th word is “<code>e</code>“ or “<code>E</code>“, and th previous leter of this leter is a consonant, th leter wil b deleted.</li>
+<li>Th second principl (also known as referer principl): If ther is a substring of th sam consonant (ignoring cas) in a word, only th first leter of th substring wil b reserved.</li>
+</ul>
+<p>It is easy to prov that XZRJification is idempotent: th result of procesing XZRJification multipl times is exactly th sam as that of only onc.</p>
+<p><strong>Your Task</strong></p>
+<p>A program for printing th flag of this chaleng has been procesed through XZRJification and packed into th atachment. Al you need to do is to retriev th program output.</p>
+<p><strong>Notes</strong></p>
+<p>This articl has been procesed through XZRJification. Any knowledg related to previous competitions is not required to get th answer to this chaleng.</p>
+</blockquote>
+<h4 id="题解：-10"><a href="#题解：-10" class="headerlink" title="题解："></a>题解：</h4><p>先把几个check改成方便调试的样子，比如这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> left != right: <br>    <span class="hljs-built_in">print</span>(<span class="hljs-number">1</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+
+<p>然后还原<code>name</code>，尝试打印flag，发现字典长度至少需要达到119（代码包含字典长度为115），需要补充≥4个字符。</p>
+<p>尝试打印序列<code>[53,41,85,109,75,28]</code>，期望得到<code>flag&#123;&#125;</code>，实际得到 <code>oso!ik</code>，偏移量分别为3,1,3(或4),5,4,1。显然索引增加之后偏移量不可能减少，可以做出以下推断：</p>
+<p>在索引<code>小于28</code>，<code>41到53</code>，<code>53到75</code>，<code>85到109</code>的部分各有1,2,1,1个字符被惜字如金化处理。</p>
+<p>然后试着把flag打印出来强行拼凑单词。</p>
+<p>重复上述步骤，改变打印的序列（注意下表不要越界）继续比较偏移量变化，查找被惜字如金化处理的字符位置。</p>
+<p>下面是一个得到flag的可行字典：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">cod_dict = []<br>cod_dict += [<span class="hljs-string">&#x27;nymeh1niwemflcir&#125;echaett&#x27;</span>]<br>cod_dict += [<span class="hljs-string">&#x27;a3g7&#125;kidgojernoetlsupe?h&#x27;</span>] <br>cod_dict += [<span class="hljs-string">&#x27;ullw!f5soadrhwnrsnsttnoeq&#x27;</span>]<br>cod_dict += [<span class="hljs-string">&#x27;ct&#123;l-findiehaai&#123;oveatas&#x27;</span>]    <br>cod_dict += [<span class="hljs-string">&#x27;tty9kxborszstguyd?!blm-p&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<p>为了不影响获取flag，可以把几个check注释掉，拿到flag：</p>
+<img src="/Hackergame2023_WP/image-20231029111159529.png" srcset="/img/loading.gif" lazyload alt="image-20231029111159529">
+
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="Hackergame启动"><a href="#Hackergame启动" class="headerlink" title="Hackergame启动"></a>Hackergame启动</h3><h4 id="题目描述：-14"><a href="#题目描述：-14" class="headerlink" title="题目描述："></a>题目描述：</h4><p>大声喊出 Hackergame 启动，开始今年的冒险！</p>
+<h4 id="题解：-11"><a href="#题解：-11" class="headerlink" title="题解："></a>题解：</h4><p>要求相似度大于99.9%？这有点难，不过请求参数明文写着呢。</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(82).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(82)" style="zoom: 25%;">
+
+<p>拿到flag：</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(88).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(88)" style="zoom:25%;">
+
+<h3 id="更深更暗"><a href="#更深更暗" class="headerlink" title="更深更暗"></a>更深更暗</h3><h4 id="题目描述：-15"><a href="#题目描述：-15" class="headerlink" title="题目描述："></a>题目描述：</h4><p>小 E 正在收看电视新闻。</p>
+<p>「诶，你知道吗，『泰坦』号潜水艇失事了！」小 E 对旁边的小 C 说。</p>
+<p>小 C 凑近电视机，看了一眼新闻里的画面。</p>
+<p>「是我眼花了吗？我刚刚有一瞬间好像在残骸上看到了一个 flag？」小 C 惊讶地说。</p>
+<p>「玩 CTF 玩的。」小 E 对此不以为然，「一定是你看错了。」</p>
+<p>小 C 却十分相信自己没有看错。</p>
+<h4 id="题解：-12"><a href="#题解：-12" class="headerlink" title="题解："></a>题解：</h4><p>打开题目页面，貌似没有可以操作的地方，遇事不决先检查元素试试看，翻到底下就发现了flag：</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(105).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(105)" style="zoom:50%;">
+
+<h3 id="HTTP-集邮册"><a href="#HTTP-集邮册" class="headerlink" title="HTTP 集邮册"></a>HTTP 集邮册</h3><h4 id="题目描述：-16"><a href="#题目描述：-16" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
+<p>「HTTP 请求一瞬间就得到了响应，但是，HTTP 响应的 status line、header 和 body 都是确实存在的。如果将一个一个 HTTP 状态码收集起来，也许就能变成……变成……变成……」</p>
+<p>「flag？」</p>
+<p>「就能变成 flag！」</p>
+</blockquote>
+<hr>
+<p>本题中，你可以向一个 nginx 服务器（对应的容器为**默认配置下的 <code>nginx:1.25.2-bookworm</code>**）发送 HTTP 请求。你需要获取到不同的 HTTP 响应状态码以获取 flag，其中：</p>
+<ul>
+<li>获取第一个 flag 需要收集 5 种状态码；</li>
+<li>获取第二个 flag 需要让 nginx 返回首行无状态码的响应（不计入收集的状态码中）；</li>
+<li>获取第三个 flag 需要收集 12 种状态码。</li>
+</ul>
+<p>关于无状态码的判断逻辑如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">crlf = buf.find(<span class="hljs-string">b&quot;\r\n&quot;</span>)<br><span class="hljs-keyword">if</span> buf.strip() != <span class="hljs-string">b&quot;&quot;</span>:<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">if</span> crlf == -<span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;No CRLF found&quot;</span>)<br>        status_line = buf[:crlf]<br>        http_version, status_code, reason_phrase = status_line.split(<span class="hljs-string">b&quot; &quot;</span>, <span class="hljs-number">2</span>)<br>        status_code = <span class="hljs-built_in">int</span>(status_code)<br>    <span class="hljs-keyword">except</span> ValueError:<br>        buf += <span class="hljs-string">&quot;（无状态码）&quot;</span>.encode()<br>        status_code = <span class="hljs-literal">None</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="题解：-13"><a href="#题解：-13" class="headerlink" title="题解："></a>题解：</h4><p>收集HTTP200  OK：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET / HTTP/<span class="hljs-number">1.1</span>\r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p>收集HTTP400  Bad Request：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/</span> <span class="hljs-meta">HTTP/1.1</span><br><span class="hljs-attribute">Host</span><span class="hljs-punctuation">: </span>example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p>收集HTTP404  Not Found：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET /flag HTTP/<span class="hljs-number">1.1</span>\r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p>收集HTTP405 Not Allowed：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">POST / HTTP/<span class="hljs-number">1.1</span>\r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p> 收集HTTP505 HTTP Version not supported:</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET / HTTP/<span class="hljs-number">2.0</span>\r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p><strong>第一个flag完成：</strong></p>
+<img src="/Hackergame2023_WP/image-20231028211647959.png" srcset="/img/loading.gif" lazyload alt="image-20231028211647959" style="zoom: 67%;">
+
+<p>收集HTTP304 Not Modified（If-None-Match填入之前的ETag）：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET / HTTP/<span class="hljs-number">1.1</span>\r\n<br>If-None-<span class="hljs-name">Match</span>:<span class="hljs-string">&quot;64dbafc8-267&quot;</span>\r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p>收集HTTP412 Precondition Failed（If-Match填入与之前ETag不同的值）：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET / HTTP/<span class="hljs-number">1.1</span>\r\n<br>If-<span class="hljs-name">Match</span>:<span class="hljs-string">&quot;1145afc8-267&quot;</span>\r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p>收集HTTP413 Request Entity Too Large：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET / HTTP/<span class="hljs-number">1.1</span>\r\n<br>Content-<span class="hljs-name">Length</span>:<span class="hljs-number">2147483647</span>\r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p>收集HTTP206 Partial Content：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">GET</span> / HTTP/<span class="hljs-number">1</span>.<span class="hljs-number">1</span>\r\n<br><span class="hljs-attribute">Range</span>: bytes=<span class="hljs-number">0</span>-<span class="hljs-number">1</span>\r\n<br><span class="hljs-attribute">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p>收集HTTP416 Requested Range Not Satisfiable：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">GET</span> / HTTP/<span class="hljs-number">1</span>.<span class="hljs-number">1</span>\r\n<br><span class="hljs-attribute">Range</span>: bytes=<span class="hljs-number">1919810</span>-<span class="hljs-number">114514</span>\r\n<br><span class="hljs-attribute">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p>收集HTTP414 Request-URI Too Large（<code>&lt;string&gt;</code>换成超长字符串，随便复制粘贴个几万字符即可）：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET /index.html?&lt;<span class="hljs-built_in">string</span>&gt; HTTP/<span class="hljs-number">1.1</span>\r\n<br><span class="hljs-name">Host</span>:example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p>收集HTTP100 Continue：</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs livescript">GET / HTTP/<span class="hljs-number">1.1</span><span class="hljs-string">\r\n</span><br>Expect:<span class="hljs-number">100</span>-<span class="hljs-keyword">continue</span><span class="hljs-string">\r\n</span><br>Host: example.com<span class="hljs-string">\r\n\r\n</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>第三个flag完成：</strong></p>
+<img src="/Hackergame2023_WP/image-20231031003249535.png" srcset="/img/loading.gif" lazyload alt="image-20231031003249535" style="zoom: 50%;">
+
+<p>接下来寻找第二个flag，符合规范的请求是这样的：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET / HTTP/<span class="hljs-number">1.1</span>\r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p>要让返回的响应没有状态码（<del>不合规范</del>实际上是HTTP0.9的活化石），那就需要在规范的请求（HTTP1.1）上做减法。资源名称、主机名称肯定是不能删除的，那么把协议版本字段删除呢？也就是下面这样：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET / \r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
+
+<p>响应首行确实没有状态码：</p>
+<img src="/Hackergame2023_WP/image-20231102120829052.png" srcset="/img/loading.gif" lazyload alt="image-20231102120829052" style="zoom: 33%;">
+
+<p><strong>第二个flag完成：</strong></p>
+<img src="/Hackergame2023_WP/image-20231102120901748.png" srcset="/img/loading.gif" lazyload alt="image-20231102120901748" style="zoom: 50%;">
+
+<h3 id="组委会模拟器"><a href="#组委会模拟器" class="headerlink" title="组委会模拟器"></a>组委会模拟器</h3><h4 id="题目描述：-17"><a href="#题目描述：-17" class="headerlink" title="题目描述："></a>题目描述：</h4><p>每年比赛，组委会的一项重要工作就是时刻盯着群，并且撤回其中有 flag 的消息。今年因为人手紧张，组委会的某名同学将这项工作外包给了你，你需要连续审查 1000 条消息，准确无误地撤回其中所有含 flag 的消息，并且不撤回任何不含 flag 的消息。</p>
+<p>本题中，你需要撤回的 “flag” 的格式为 <strong><code>hack[...]</code><strong>，其中</strong>方括号</strong>内均为小写英文字母，点击消息即可撤回。你需要在 3 秒内撤回消息，否则撤回操作将失败。在全部消息显示完成后等待几秒，如果你撤回的消息完全正确（撤回了全部需要撤回的消息，并且未将不需要撤回的消息撤回），就能获得本题<strong>真正的 flag</strong>。</p>
+<h4 id="题解：-14"><a href="#题解：-14" class="headerlink" title="题解："></a>题解：</h4><p>作者使用的浏览器是Microsoft Edge(Chromium-based)，写个Selenium脚本试试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By<br><span class="hljs-keyword">from</span> selenium.webdriver.edge.options <span class="hljs-keyword">import</span> Options<br><span class="hljs-keyword">from</span> selenium.webdriver.common.keys <span class="hljs-keyword">import</span> Keys<br><span class="hljs-keyword">import</span> time<br><br><br>options = Options()<br>options.set_capability(<span class="hljs-string">&quot;ms:edgeChrominum&quot;</span>, <span class="hljs-string">&quot;no&quot;</span>)<br>options.add_experimental_option(<span class="hljs-string">&quot;detach&quot;</span>, <span class="hljs-literal">True</span>)<br>driver = webdriver.Edge(options=options)<br>driver.get(<span class="hljs-string">r&#x27;http://202.38.93.111:10021/&#x27;</span>)<br>tk = driver.find_element(By.NAME,<span class="hljs-string">&#x27;token&#x27;</span>)<br>tk.clear()<br>tk.send_keys(<span class="hljs-string">&quot;...&quot;</span>)		<span class="hljs-comment">#自己的Token</span><br>tk.send_keys(Keys.ENTER)<br><span class="hljs-keyword">while</span> <span class="hljs-number">1</span>:<br>    <span class="hljs-keyword">try</span>:<br>        driver.find_element(By.XPATH,<span class="hljs-string">&#x27;//span[contains(text(),&quot;hack[&quot;) and contains(text(),&quot;]&quot;)]&#x27;</span>).click()<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">pass</span>       <br></code></pre></td></tr></table></figure>
+
+<p>需要注意：使用<code>//span[contains(text(),&quot;hack[&quot;) and contains(text(),&quot;]&quot;)]</code>这个表达式可能会点击错误的消息，但是作者使用的浏览器不支持XPath 2.0，无法使用XPath matches（正则表达式匹配）。<strong>因此这也算是一个误打误撞出来的非预期解。</strong>如果出现误撤回的情况，可以重新进入题目。</p>
+<p><del>经验教训：不要随意点击鼠标。</del></p>
+<p>建议提前准备屏幕录制<del>（别问作者是怎么知道的）</del>并逐帧分析捕获flag：</p>
+<img src="/Hackergame2023_WP/image-20231029135002286.png" srcset="/img/loading.gif" lazyload alt="image-20231029135002286" style="zoom: 50%;">
+
+<h3 id="赛博井字棋"><a href="#赛博井字棋" class="headerlink" title="赛博井字棋"></a>赛博井字棋</h3><h4 id="题目描述：-18"><a href="#题目描述：-18" class="headerlink" title="题目描述："></a>题目描述：</h4><p>那一年的人机大战，是 AlphaGo 对阵柯洁，最终比分 3-0。当时我看见柯洁颓坐在椅子上泣不成声，这个画面我永生难忘。那一刻我在想，如果我能成为一名棋手，我一定要赢下人工智能。如今 AI 就在眼前，我必须考虑这会不会是我此生仅有的机会。重铸人类围棋荣光，我辈义不容辞！</p>
+<p>……</p>
+<p>但是围棋实在太难了，你决定先从井字棋开始练习。</p>
+<h4 id="题解：-15"><a href="#题解：-15" class="headerlink" title="题解："></a>题解：</h4><p>页面其貌不扬，只好拦截请求看看了。尝试放下第一颗棋子，发现请求体带了坐标。</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(173).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(173)" style="zoom: 25%;">
+
+<p>放下第二颗棋子，它右边的格子已经被AI占了。粗暴点击是行不通的，不过可以修改请求体。</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(174)-16985695036033.png" srcset="/img/loading.gif" lazyload style="zoom:25%;">
+
+<p>获得flag：</p>
+<img src="/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(175).png" srcset="/img/loading.gif" lazyload alt="屏幕截图(175)" style="zoom:25%;">
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF-Writeup/" class="category-chain-item">CTF-Writeup</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+        <a href="/tags/Hackergame/" class="print-no-link">#Hackergame</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Hackergame 2023 Writeup</div>
+      <div>https://sgong-0224.github.io/Hackergame2023_WP/</div>
+    </div>
+    <div class="license-meta">
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年11月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="ND - 禁止演绎">
+                    <i class="iconfont icon-nd"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'sgong-0224/GH_Pages_Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <div>Powered by: <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量：
+        <span id="busuanzi_value_site_pv"></span>
+         
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数：
+        <span id="busuanzi_value_site_uv"></span>
+         
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
