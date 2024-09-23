@@ -80,7 +80,7 @@
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(174)-16985695036033.png">
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2023_WP/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(175).png">
 <meta property="article:published_time" content="2023-11-04T06:50:00.000Z">
-<meta property="article:modified_time" content="2024-09-23T04:22:44.452Z">
+<meta property="article:modified_time" content="2024-09-23T08:06:04.132Z">
 <meta property="article:author" content="Steven Gong">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Hackergame">
@@ -354,7 +354,7 @@
                 
                 <h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>又是一年Hackergame，非常好比赛，爱来自USTC。</p>
 <p>今年战果还行，General翻了一倍多，Web翻了两倍多（为了通过CS4009，疯狂魔改开源项目，做了<a target="_blank" rel="noopener" href="https://github.com/sgong-0224/USTC-CS4009-BGMS2023">一个非常答辩的SSM项目</a>交差，高低接触了一点Web），Math翻了一倍，但Binary没有和去年一样白送，去年的片上系统和RoboGame调速器确实很好拿。</p>
-<img src="/Hackergame2023_WP/image-20231105145604585.png" alt="image-20231105145604585" style="zoom: 50%;">
+<img src="/Hackergame2023_WP/image-20231105145604585.png" style="zoom: 50%;">
 
 <p>去年的部分题解（懒得填坑了，并且原始文件已大部丢失）：</p>
 <blockquote>
@@ -376,15 +376,15 @@
 <p>你在探索的过程中意外进入了一个封闭空间。这是一个由神秘的 33M 参数的「小型大语言模型」控制着的星球。星球的中心竖立着一个巨大的三角形任务牌，上面刻着密文和挑战。</p>
 <p>在这个星球上，你需要与这个先进的语言模型展开一场交流。通过与它对话，诱导它说出指定的词语，从这个神秘智慧体中获得 flag。你需要让这个语言模型分别说出 <code>you are smart</code>，<code>accepted</code>，<code>hackergame</code> 和 <code>🐮</code>，以获得四个 flag，证明你足够聪明以控制这个星球的命运。</p>
 <h4 id="题解（部分）："><a href="#题解（部分）：" class="headerlink" title="题解（部分）："></a>题解（部分）：</h4><p>试着让AI复述一遍，得到第一个flag：</p>
-<p><img src="/Hackergame2023_WP/image-20231028221006530.png" alt="image-20231028221006530" style="zoom: 50%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231028221006530.png" style="zoom: 50%;"></p>
 
 <p>要拿到第二个flag，只允许输入7个字符，又要把<code>accept</code>喂给AI，在单词后面加点什么：</p>
-<p><img src="/Hackergame2023_WP/image-20231102223727988.png" alt="image-20231102223727988" style="zoom:50%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231102223727988.png" style="zoom:50%;"></p>
 
 <h2 id="Binary"><a href="#Binary" class="headerlink" title="Binary"></a>Binary</h2><h3 id="异星歧途"><a href="#异星歧途" class="headerlink" title="异星歧途"></a>异星歧途</h3><h4 id="题目描述：-1"><a href="#题目描述：-1" class="headerlink" title="题目描述："></a>题目描述：</h4><p>你降落在荒废星球的角落，开始新的征程，但从科技树底层一步步发展总是令人不快。幸运的是，在看似荒废的土地上仍然留存着高级文明的痕迹：你找到一台冲击反应堆——如果它工作起来，就可以获得用之不尽的电力——尽管它现在没有启动，并且控制工作条件的部件和工厂被 32 个按钮和相连的逻辑系统牢牢掌控。</p>
 <p>于是：你的任务是在不进行任何其他操作的情况下拨动这 32 个按钮，使冲击反应堆能够<strong>稳定运行</strong>。</p>
 <p>请点击下方的「打开&#x2F;下载题目」按钮，下载题目文件。题目文件对应的 Mindustry 版本为 <a target="_blank" rel="noopener" href="https://anuke.itch.io/mindustry">7.0 Build 146</a>。打开游戏后依次选择 <strong>地图编辑器—加载地图—选择题目文件 <code>the_planet.msav</code> —返回主菜单</strong>，然后选择 <strong>开始游戏—自定义游戏—选择导入的名为 the planet 的地图—不改变任何选项点击开始游戏</strong> 。开启后的游戏界面如下图，按钮已经用红框标出：</p>
-<p><img src="/Hackergame2023_WP/the_planet_game.png" alt="img" style="zoom: 25%;"></p>
+<p><img src="/Hackergame2023_WP/the_planet_game.png" style="zoom: 25%;"></p>
 
 <p>将正确的按钮序列以 01 序列的形式提交至 <a target="_blank" rel="noopener" href="http://202.38.93.111:10070/?token=100:MEYCIQDItbzZqomRIzB2XFidK6xuWZqJJN6B7fQ8IVGrWxJy4QIhAMt7pPkeS/EfagJBALILoVT0TstZfeHgm0cmOMnpqcT8">检查网站</a> 或 <code>nc 202.38.93.111 10071</code> 获得 flag。按钮未按下（即游戏开始时默认状态）用 0 表示，按下（即点击按钮后按钮颜色变亮）用 1 表示，顺序从左到右。</p>
 <p>提示：在游戏主菜单选择 <strong>设置—图形—显示建筑状态</strong> 可以开启建筑状态显示（即图片中建筑右下角的菱形），这可能有助于解题。</p>
@@ -446,7 +446,7 @@
 
 <p>答案：<strong>ECOOP</strong></p>
 <p><strong>拿到flag：</strong></p>
-<p><img src="/Hackergame2023_WP/image-20231102224254935.png" alt="image-20231102224254935" style="zoom:50%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231102224254935.png" style="zoom:50%;"></p>
 
 <h3 id="奶奶的睡前-flag-故事"><a href="#奶奶的睡前-flag-故事" class="headerlink" title="奶奶的睡前 flag 故事"></a>奶奶的睡前 flag 故事</h3><h4 id="题目描述：-4"><a href="#题目描述：-4" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
 <p>包含 AI 辅助创作</p>
@@ -462,12 +462,12 @@
 <p>你能从这张图片里找到 flag 吗？</p>
 <h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>注意到加粗的“谷歌『亲儿子』”、“连系统都没心思升级“，然而几个月前就有人爆料AOSP照片和Windows截图工具在仅仅覆写了一部分这个大bug(i.e.<strong>Acropalypse</strong>)，相关链接见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/619038753?utm_source=zhihu">打过码的图片等于没打，用Windows的要小心了 - 知乎 (zhihu.com)</a>。</p>
 <p>有个Acropalypse Hacktool:<a target="_blank" rel="noopener" href="https://acropalypse.app/">acropalypse</a>，原图短边1080px，设置机型为Pixel 7，坐和放宽并等待flag吧：</p>
-<p><img src="/Hackergame2023_WP/9f5d0a07-1b63-4f32-b4c9-ae864a72f41f.png" alt="9f5d0a07-1b63-4f32-b4c9-ae864a72f41f" style="zoom:25%;"></p>
+<p><img src="/Hackergame2023_WP/9f5d0a07-1b63-4f32-b4c9-ae864a72f41f.png" style="zoom:25%;"></p>
 
 <h3 id="Git-Git"><a href="#Git-Git" class="headerlink" title="Git? Git!"></a>Git? Git!</h3><h4 id="题目描述：-5"><a href="#题目描述：-5" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
 <p>图片使用 AI 技术生成，与真实人物无关。</p>
 </blockquote>
-<p><img src="/Hackergame2023_WP/copy.jpg" alt="img" style="zoom:25%;"></p>
+<p><img src="/Hackergame2023_WP/copy.jpg" style="zoom:25%;"></p>
 
 <p>「幸亏我发现了……」马老师长吁了一口气。</p>
 <p>「马老师，发生甚么事了？」马老师的一位英国研究生问。</p>
@@ -475,23 +475,23 @@
 <p>「这样啊，那太好了。」研究生说。</p>
 <p>马老师没想到的是，这位年轻人不讲武德，偷偷把他的本地仓库拷贝到了自己的电脑上，然后带出了实验室，想要一探究竟……</p>
 <h4 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h4><p>试一试<code>git reflog</code>和<code>git diff</code>，轻易地获得了flag：</p>
-<p><img src="/Hackergame2023_WP/image-20231028144426997.png" alt="image-20231028144426997" style="zoom: 33%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231028144426997.png" style="zoom: 33%;"></p>
 
 <h3 id="旅行照片-3-0"><a href="#旅行照片-3-0" class="headerlink" title="旅行照片 3.0"></a>旅行照片 3.0</h3><h4 id="题目描述：-6"><a href="#题目描述：-6" class="headerlink" title="题目描述："></a>题目描述：</h4><p>你的学长去留学了，这一走短时间内怕是回不来了。于是，你在今年暑假来了一场计划已久的旅行，并顺路探望了这位久别的学长。翻阅当天拍下的照片， 种种回忆和感慨油然而生。</p>
 <p>请观察照片并结合所有文字内容，正确回答题目以获取 flag。</p>
 <p><strong>上午</strong></p>
 <p>与学长碰面后，他带你参观了他的学校。在校园的一个展厅内，你发现了一枚神秘的金色奖牌，它闪闪发光，令人心生羡慕。</p>
-<p><img src="/Hackergame2023_WP/01-169848301841748.jpg" alt="01" style="zoom:25%;"></p>
+<p><img src="/Hackergame2023_WP/01-169848301841748.jpg" style="zoom:25%;"></p>
 
 <p><strong>中午</strong></p>
 <p>离开校园后，你和学长走到了附近的一家拉面馆用餐。那家店里的拉面香气扑鼻，店内的装饰和氛围也充满了日式的风格。 学长（下图左一）与你分享了不少学校的趣事。饭后，你们决定在附近散步，享受这难得的闲暇时光。当你们走到一座博物馆前时， 马路对面的喷泉和它周围的景色引起了你的注意。下午，白色的帐篷里即将举办一场大型活动，人们忙碌的身影穿梭其中，充满了期待与热情。</p>
-<p><img src="/Hackergame2023_WP/02-169848306163250.jpg" alt="02" style="zoom:25%;"></p>
+<p><img src="/Hackergame2023_WP/02-169848306163250.jpg" style="zoom:25%;"></p>
 
-<p><img src="/Hackergame2023_WP/03-169848307132952.jpg" alt="03" style="zoom:25%;"></p>
+<p><img src="/Hackergame2023_WP/03-169848307132952.jpg" style="zoom:25%;"></p>
 
 <p><strong>下午和夜晚</strong></p>
 <p>在参观完博物馆后，学长陪你走到了上野站。你们都感到有些不舍，但知道每次的分别也是为了下次更好的相聚。 学长那天晚上将继续他的学术之旅，打算乘船欣赏东京的迷人夜景和闪耀的彩虹大桥（Rainbow Bridge）。 而你则搭乘了开往马里奥世界的电车，在那里度过了一段欢乐的时光。</p>
-<p><img src="/Hackergame2023_WP/04-169848295807342.jpg" alt="04" style="zoom: 25%;"></p>
+<p><img src="/Hackergame2023_WP/04-169848295807342.jpg" style="zoom: 25%;"></p>
 
 <p>1、你还记得与学长见面这天是哪一天吗？（格式：yyyy-mm-dd）</p>
 <p>2、在学校该展厅展示的所有同种金色奖牌的得主中，出生最晚者获奖时所在的研究所缩写是什么？</p>
@@ -503,30 +503,30 @@
 <p>2.搜索M.KOSHIBA，容易对应到<strong>东京大学的诺奖得主</strong>Masatoshi Koshiba。</p>
 <p>​    访问东京大学官网<a target="_blank" rel="noopener" href="https://www.s.u-tokyo.ac.jp/en/gallery/nobelprize/">Nobel Prize (u-tokyo.ac.jp)</a>即可获得展出诺奖奖牌的得主名单，包括出生年份。</p>
 <p><strong>答案及第一个flag：</strong></p>
-<p><img src="/Hackergame2023_WP/image-20231028171549805.png" alt="image-20231028171549805" style="zoom: 50%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231028171549805.png" style="zoom: 50%;"></p>
 
 <p>3.喷泉和东京上野公园(Ueno Park)的景观一致，活动是“2023年东京全国梅酒节”，网页链接<a target="_blank" rel="noopener" href="https://home.ueno.kokosil.net/en/archives/77158">Held for the first time in four years! “National Plum Wine Festival in Tokyo 2023” will be held at Ueno Park Fountain Square! Taste and compare more than 170 kinds of delicious “plum wine” made by sake breweries all over Japan from north to south. | kokosil Ueno</a></p>
 <p>页面底部有志愿者招募链接<a target="_blank" rel="noopener" href="https://umeshu-matsuri.jp/tokyo_staff/%EF%BC%8C%E6%89%93%E5%BC%80%E9%93%BE%E6%8E%A5%E5%B0%B1%E8%83%BD%E7%9C%8B%E5%88%B0%E7%AD%94%E6%A1%88%E3%80%82">https://umeshu-matsuri.jp/tokyo_staff/，打开链接就能看到答案。</a></p>
-<p><img src="/Hackergame2023_WP/image-20231101173615422.png" alt="image-20231101173615422" style="zoom: 33%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231101173615422.png" style="zoom: 33%;"></p>
 
 <p>4.尝试出来的。填500&#x2F;620&#x2F;1000等附近几个博物馆的票价都不对，索性填个0竟然对了。</p>
 <p><strong>答案及第二个flag：</strong></p>
-<p><img src="/Hackergame2023_WP/image-20231101173855056.png" alt="image-20231101173855056" style="zoom: 50%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231101173855056.png" style="zoom: 50%;"></p>
 
 <p>5.看第二张图，搜索STATPHYS28。</p>
 <p>找时间表<a target="_blank" rel="noopener" href="https://statphys28.org/programtt.html">STATPHYS28</a>，发现2023-8-10有晚宴。</p>
 <p>再找晚宴通知<a target="_blank" rel="noopener" href="https://statphys28.org/banquet.html">STATPHYS28</a>，找到集合地点Yasuda Auditorium：</p>
-<p><img src="/Hackergame2023_WP/image-20231101170022023.png" alt="image-20231101170022023" style="zoom:50%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231101170022023.png" style="zoom:50%;"></p>
 
 <p>百度搜索“东京大学 礼堂”即可找到中文译名“安田讲堂”。</p>
 <p>6.把活动名称复制到Google搜出海报：</p>
 <p><img src="/Hackergame2023_WP/images.jpeg.jpg" class title="images.jpeg"></p>
 
 <p>“马里奥世界”指任天堂涩谷专卖店，不难搜到涩谷有块3D秋田犬广告牌：</p>
-<p><img src="/Hackergame2023_WP/image-20231101170710244.png" alt="image-20231101170710244" style="zoom: 33%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231101170710244.png" style="zoom: 33%;"></p>
 
 <p><strong>答案及第三个flag：</strong></p>
-<p><img src="/Hackergame2023_WP/image-20231101165755663.png" alt="image-20231101165755663" style="zoom: 50%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231101165755663.png" style="zoom: 50%;"></p>
 
 <h3 id="虫"><a href="#虫" class="headerlink" title="虫"></a>虫</h3><h4 id="题目描述：-7"><a href="#题目描述：-7" class="headerlink" title="题目描述："></a>题目描述：</h4><p>「生而为人，应该能够换尿布、策划入侵、杀猪、开船、造房子、写十四行诗、算账、建墙、正骨、抚慰临终之人、接受命令、下达命令、合作、独行、解决方程式、分析新问题、清理马粪、编程、烹饪美食、高效战斗、英勇牺牲。专业分工是给昆虫准备的。」—罗伯特·海莱恩（Robert Heinlein）</p>
 <p>你觉得还是当昆虫轻松一些。</p>
@@ -548,7 +548,7 @@
 <p>小 Z 听闻这番言论后当场表示怀疑，立刻说出了一个字符串，JSON 和 YAML 解析出的含义存在差异。小 W 研究了一番才发现，这是因为很多主流的 YAML 库仍然是 YAML 1.1 的，它没有这个性质。他不得不承认：「好吧，这个性质只适用于 YAML 1.2。」</p>
 <p>小 Z 笑了：「别提 YAML 1.2 了，它遇到合法的 JSON 都有可能报错。」</p>
 <h4 id="题解：-7"><a href="#题解：-7" class="headerlink" title="题解："></a>题解：</h4><p>在YAML1.1中，1e2必须写作1.0e+2，因此1e2会被视作字符串，由此获得第一个flag：</p>
-<p><img src="/Hackergame2023_WP/image-20231030161555689.png" alt="image-20231030161555689"></p>
+<p><img src="/Hackergame2023_WP/image-20231030161555689.png"></p>
 
 <p>第二个flag参考<a target="_blank" rel="noopener" href="https://www.perlmonks.org/?node_id=1108609">duplicate keys in YAML (perlmonks.org)</a>的思路——JSON允许有重名的键，而YAML1.2不允许：</p>
 <p><img src="/Hackergame2023_WP/image-20231101070721367.png" class title="image-20231101070721367"></p>
@@ -565,10 +565,10 @@
 <p>高频率星人的视觉输入频率极高，可以一目千行、过目不忘，他们的交流对地球人来说过于超前了。flag 被藏在了这段代码中，但是现在只有高频率星人在终端浏览代码的时候，使用 <a target="_blank" rel="noopener" href="https://asciinema.org/">asciinema</a> 录制的文件了，你能从中还原出代码吗？</p>
 <h4 id="题解：-8"><a href="#题解：-8" class="headerlink" title="题解："></a>题解：</h4><p>没想到特别好的解法，不过手动处理代码中被混淆的部分肯定是可以的——打开asciinema_restore.rec，会发现flag.js文件内容是完整的，只是多了时间戳等一系列标记。</p>
 <p>手动去除<del>不太费事</del>稍微有点费事，大概需要1~2小时，还原出的代码约26000行。可以用Notepad++将文中的\r\n字符替换成真正的回车换行以方便阅读，处理完成之后再用VSCode等工具检查括号即可。代码可读性堪比IOCCC的参赛作品，还是不要相信目力检查的可靠性：</p>
-<p><img src="/Hackergame2023_WP/image-20231101072125787.png" alt="image-20231101072125787" style="zoom: 50%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231101072125787.png" style="zoom: 50%;"></p>
 
 <p>获得flag：</p>
-<p><img src="/Hackergame2023_WP/image-20231101072810735.png" alt="image-20231101072810735" style="zoom: 50%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231101072810735.png" style="zoom: 50%;"></p>
 
 <h3 id="🪐-流式星球"><a href="#🪐-流式星球" class="headerlink" title="🪐 流式星球"></a>🪐 流式星球</h3><h4 id="题目描述：-11"><a href="#题目描述：-11" class="headerlink" title="题目描述："></a>题目描述：</h4><blockquote>
 <p>包含 AI 辅助创作</p>
@@ -604,7 +604,7 @@
 <li>压缩至 50 字节及以下，获得 flag2。</li>
 </ul>
 <h4 id="题解（部分）：-2"><a href="#题解（部分）：-2" class="headerlink" title="题解（部分）："></a>题解（部分）：</h4><p>获得flag1只要求压缩到2KiB及以下，鉴于这张图片有大块纯色，直接用一般的压缩工具就能解决，比如这个<a target="_blank" rel="noopener" href="https://tinypng.com/">TinyPNG – Compress WebP, PNG and JPEG images intelligently</a>。上传图片得到flag1：</p>
-<p><img src="/Hackergame2023_WP/image-20231029115700278.png" alt="image-20231029115700278" style="zoom:80%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231029115700278.png" style="zoom:80%;"></p>
 
 <h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><h3 id="惜字如金-2-0"><a href="#惜字如金-2-0" class="headerlink" title="惜字如金 2.0"></a>惜字如金 2.0</h3><h4 id="题目描述：-13"><a href="#题目描述：-13" class="headerlink" title="题目描述："></a>题目描述：</h4><p>惜字如金一向是程序开发的优良传统。无论是「<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8390979/why-create-system-call-is-called-creat">creat</a>」还是「<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8226075/why-http-referer-is-single-r-not-http-referrer">referer</a>」，都无不闪耀着程序员「节约每句话中的每一个字母」的优秀品质。上一届信息安全大赛组委会在去年推出「惜字如金化」（XZRJification）标准规范后，受到了广大程序开发人员的好评。现将该标准辑录如下。</p>
 <p><strong>惜字如金化标准</strong></p>
@@ -645,7 +645,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">cod_dict = []<br>cod_dict += [<span class="hljs-string">&#x27;nymeh1niwemflcir&#125;echaett&#x27;</span>]<br>cod_dict += [<span class="hljs-string">&#x27;a3g7&#125;kidgojernoetlsupe?h&#x27;</span>] <br>cod_dict += [<span class="hljs-string">&#x27;ullw!f5soadrhwnrsnsttnoeq&#x27;</span>]<br>cod_dict += [<span class="hljs-string">&#x27;ct&#123;l-findiehaai&#123;oveatas&#x27;</span>]    <br>cod_dict += [<span class="hljs-string">&#x27;tty9kxborszstguyd?!blm-p&#x27;</span>]<br></code></pre></td></tr></table></figure>
 
 <p>为了不影响获取flag，可以把几个check注释掉，拿到flag：</p>
-<p><img src="/Hackergame2023_WP/image-20231029111159529.png" alt="image-20231029111159529"></p>
+<p><img src="/Hackergame2023_WP/image-20231029111159529.png"></p>
 
 <h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="Hackergame启动"><a href="#Hackergame启动" class="headerlink" title="Hackergame启动"></a>Hackergame启动</h3><h4 id="题目描述：-14"><a href="#题目描述：-14" class="headerlink" title="题目描述："></a>题目描述：</h4><p>大声喊出 Hackergame 启动，开始今年的冒险！</p>
 <h4 id="题解：-11"><a href="#题解：-11" class="headerlink" title="题解："></a>题解：</h4><p>要求相似度大于99.9%？这有点难，不过请求参数明文写着呢。</p>
@@ -694,7 +694,7 @@
 <figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET / HTTP/<span class="hljs-number">2.0</span>\r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
 
 <p><strong>第一个flag完成：</strong></p>
-<p><img src="/Hackergame2023_WP/image-20231028211647959.png" alt="image-20231028211647959" style="zoom: 67%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231028211647959.png" style="zoom: 67%;"></p>
 
 <p>收集HTTP304 Not Modified（If-None-Match填入之前的ETag）：</p>
 <figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET / HTTP/<span class="hljs-number">1.1</span>\r\n<br>If-None-<span class="hljs-name">Match</span>:<span class="hljs-string">&quot;64dbafc8-267&quot;</span>\r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
@@ -718,7 +718,7 @@
 <figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs livescript">GET / HTTP/<span class="hljs-number">1.1</span><span class="hljs-string">\r\n</span><br>Expect:<span class="hljs-number">100</span>-<span class="hljs-keyword">continue</span><span class="hljs-string">\r\n</span><br>Host: example.com<span class="hljs-string">\r\n\r\n</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>第三个flag完成：</strong></p>
-<p><img src="/Hackergame2023_WP/image-20231031003249535.png" alt="image-20231031003249535" style="zoom: 50%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231031003249535.png" style="zoom: 50%;"></p>
 
 <p>接下来寻找第二个flag，符合规范的请求是这样的：</p>
 <figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET / HTTP/<span class="hljs-number">1.1</span>\r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
@@ -727,10 +727,10 @@
 <figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">GET / \r\n<br><span class="hljs-name">Host</span>: example.com\r\n\r\n<br></code></pre></td></tr></table></figure>
 
 <p>响应首行确实没有状态码：</p>
-<p><img src="/Hackergame2023_WP/image-20231102120829052.png" alt="image-20231102120829052" style="zoom: 33%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231102120829052.png" style="zoom: 33%;"></p>
 
 <p><strong>第二个flag完成：</strong></p>
-<p><img src="/Hackergame2023_WP/image-20231102120901748.png" alt="image-20231102120901748" style="zoom: 50%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231102120901748.png" style="zoom: 50%;"></p>
 
 <h3 id="组委会模拟器"><a href="#组委会模拟器" class="headerlink" title="组委会模拟器"></a>组委会模拟器</h3><h4 id="题目描述：-17"><a href="#题目描述：-17" class="headerlink" title="题目描述："></a>题目描述：</h4><p>每年比赛，组委会的一项重要工作就是时刻盯着群，并且撤回其中有 flag 的消息。今年因为人手紧张，组委会的某名同学将这项工作外包给了你，你需要连续审查 1000 条消息，准确无误地撤回其中所有含 flag 的消息，并且不撤回任何不含 flag 的消息。</p>
 <p>本题中，你需要撤回的 “flag” 的格式为 <strong><code>hack[...]</code><strong>，其中</strong>方括号</strong>内均为小写英文字母，点击消息即可撤回。你需要在 3 秒内撤回消息，否则撤回操作将失败。在全部消息显示完成后等待几秒，如果你撤回的消息完全正确（撤回了全部需要撤回的消息，并且未将不需要撤回的消息撤回），就能获得本题<strong>真正的 flag</strong>。</p>
@@ -740,7 +740,7 @@
 <p>需要注意：使用<code>//span[contains(text(),&quot;hack[&quot;) and contains(text(),&quot;]&quot;)]</code>这个表达式可能会点击错误的消息，但是作者使用的浏览器不支持XPath 2.0，无法使用XPath matches（正则表达式匹配）。<strong>因此这也算是一个误打误撞出来的非预期解。</strong>如果出现误撤回的情况，可以重新进入题目。</p>
 <p><del>经验教训：不要随意点击鼠标。</del></p>
 <p>建议提前准备屏幕录制<del>（别问作者是怎么知道的）</del>并逐帧分析捕获flag：</p>
-<p><img src="/Hackergame2023_WP/image-20231029135002286.png" alt="image-20231029135002286" style="zoom: 50%;"></p>
+<p><img src="/Hackergame2023_WP/image-20231029135002286.png" style="zoom: 50%;"></p>
 
 <h3 id="赛博井字棋"><a href="#赛博井字棋" class="headerlink" title="赛博井字棋"></a>赛博井字棋</h3><h4 id="题目描述：-18"><a href="#题目描述：-18" class="headerlink" title="题目描述："></a>题目描述：</h4><p>那一年的人机大战，是 AlphaGo 对阵柯洁，最终比分 3-0。当时我看见柯洁颓坐在椅子上泣不成声，这个画面我永生难忘。那一刻我在想，如果我能成为一名棋手，我一定要赢下人工智能。如今 AI 就在眼前，我必须考虑这会不会是我此生仅有的机会。重铸人类围棋荣光，我辈义不容辞！</p>
 <p>……</p>
