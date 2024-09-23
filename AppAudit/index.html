@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://sgong-0224.github.io/AppAudit/Screenshot_20230813_170622_Adhell3.jpg">
 <meta property="og:image" content="https://sgong-0224.github.io/AppAudit/Screenshot_20230813_170810_Adhell3.jpg">
 <meta property="article:published_time" content="2023-08-13T09:45:00.000Z">
-<meta property="article:modified_time" content="2023-11-04T06:50:34.064Z">
+<meta property="article:modified_time" content="2024-09-23T04:41:26.300Z">
 <meta property="article:author" content="Steven Gong">
 <meta property="article:tag" content="移动互联网">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,7 +39,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>关于“App备案制”的个人理解 - sgong&#39;s homepage</title>
+  <title>关于“App备案制”的个人理解 - sgong&#39;s homepage</title><meta name="robots" content="noindex">
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -81,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"sgong-0224.github.io","root":"/","version":"1.9.6","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"code_language":{"enable":false,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":4},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"sgong-0224.github.io","root":"/","version":"1.9.6","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"code_language":{"enable":false,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":6},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -276,14 +276,6 @@
 
     
     
-      
-        <span id="busuanzi_container_page_pv" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          浏览量：<span id="busuanzi_value_page_pv"></span> 
-        </span>
-        
-      
-    
   </div>
 
 
@@ -356,7 +348,7 @@
 <p>(3)不要使用身份不明的网络代理；</p>
 <p>(4)不要安装“国家反诈中心”应用；如必要，将其控制在非日常使用的沙箱环境中运行；</p>
 <p>(5)检查系统的根证书设置（Windows系统相关设置见下图，智能终端可忽略此步），避免使用CNNIC等不受信任机构颁发的证书。</p>
-<img src="/AppAudit/屏幕截图(3020).png" srcset="/img/loading.gif" lazyload style="zoom: 67%;">
+<img src="/AppAudit/屏幕截图(3020).png" style="zoom: 67%;">
 
 <h3 id="怎么应对新规？"><a href="#怎么应对新规？" class="headerlink" title="怎么应对新规？"></a>怎么应对新规？</h3><p>这里仅提供一些应对思路与相关信息，不对具体步骤作出指导。</p>
 <h4 id="Huawei-vivo设备"><a href="#Huawei-vivo设备" class="headerlink" title="Huawei&#x2F;vivo设备"></a>Huawei&#x2F;vivo设备</h4><p>建议更换设备，或谨慎更新到新规后发布的固件版本。这些设备内建无法关闭的检查功能，或者无法离线安装应用。并且这些设备无法通过常规手段获得系统权限，一旦新规正式推行，存在严重的后门隐患——你的应用可能随时被切断网络权限，包名信息可能在不知情的情况下被上报到监管机构。同时，这些设备内建有臭名昭著的<strong>腾讯天御组件</strong>（详见后文）且无法控制其联网，已经有证据表明，该组件会监听用户的输入、安装等操作，并连接位于广东的不明IDC机房进行上报。</p>
@@ -368,7 +360,7 @@
 <h4 id="其他运行中国大陆版固件的国产品牌设备"><a href="#其他运行中国大陆版固件的国产品牌设备" class="headerlink" title="其他运行中国大陆版固件的国产品牌设备"></a>其他运行中国大陆版固件的国产品牌设备</h4><p>虽然目前没有确凿证据证明后门存在，但建议你时刻保持警惕并作出必要的应对措施——比如关闭杀毒软件、禁用系统安全组件的联网。你应该谨慎购买和使用宣称具有“全链路反诈”功能的设备，这些设备更可能泄露用户隐私或跟进监管要求。</p>
 <h4 id="运行中国大陆版固件的Samsung设备"><a href="#运行中国大陆版固件的Samsung设备" class="headerlink" title="运行中国大陆版固件的Samsung设备"></a>运行中国大陆版固件的Samsung设备</h4><p>这类设备内建<strong>腾讯天御组件</strong>，但目前还没有存在后门的记录。不过由于Samsung设备的特性，可以使用Adhell3应用（<a href="./adhell.zip">点此下载</a> ）</p>
 <p>来控制系统组件的联网权限。完成安装后打开应用，然后按下图设置即可。</p>
-<p><img src="/AppAudit/Screenshot_20230813_170622_Adhell3.jpg" srcset="/img/loading.gif" lazyload style="zoom: 25%;"><img src="/AppAudit/Screenshot_20230813_170810_Adhell3.jpg" srcset="/img/loading.gif" lazyload alt="Screenshot_20230813_170810_Adhell3" style="zoom: 25%;"></p>
+<p><img src="/AppAudit/Screenshot_20230813_170622_Adhell3.jpg" style="zoom: 25%;"><img src="/AppAudit/Screenshot_20230813_170810_Adhell3.jpg" alt="Screenshot_20230813_170810_Adhell3" style="zoom: 25%;"></p>
 <h4 id="运行中国大陆版固件的其他国际品牌Android设备-运行海外版固件的国际品牌Android设备"><a href="#运行中国大陆版固件的其他国际品牌Android设备-运行海外版固件的国际品牌Android设备" class="headerlink" title="运行中国大陆版固件的其他国际品牌Android设备||运行海外版固件的国际品牌Android设备"></a>运行中国大陆版固件的其他国际品牌Android设备||运行海外版固件的国际品牌Android设备</h4><p>这些品牌向来尊重用户隐私，即使有后门（可能为境外监管机构所用）也不会导致你被找麻烦。</p>
 <h4 id="iOS设备"><a href="#iOS设备" class="headerlink" title="iOS设备"></a>iOS设备</h4><p><strong>Apple ID地区为“中国大陆”的iOS设备是不安全的设备！</strong></p>
 <p><strong>Apple ID地区为“中国大陆”的iOS设备是不安全的设备！</strong></p>
@@ -378,7 +370,7 @@
 <p>&#x2F;storage&#x2F;emulated&#x2F;0&#x2F;DCIM&#x2F;.tmfs</p>
 <p>&#x2F;storage&#x2F;emulated&#x2F;0&#x2F;turing.dat</p>
 <p>等文件，请留意是否有可疑软件包含了腾讯天御组件(可用LibChecker等工具查看)。</p>
-
+<!-- flag of hidden posts -->
                 
               </div>
             
@@ -476,7 +468,7 @@
             
   
   
-    <article id="comments" lazyload>
+    <article id="comments">
       
   <script type="text/javascript">
     Fluid.utils.loadComments('#comments', function() {
@@ -649,10 +641,6 @@
 
 
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
 
 
 
@@ -757,7 +745,7 @@
               inlineMath: { '[+]': [['$', '$']] }
             },
             loader : {
-              load: ['ui/lazy']
+              
             },
             options: {
               renderActions: {
