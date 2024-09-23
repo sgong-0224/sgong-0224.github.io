@@ -47,7 +47,7 @@
 <meta property="og:image" content="https://sgong-0224.github.io/CSAPP3e_WP/image-20240202164732726-172450358245639.png">
 <meta property="og:image" content="https://sgong-0224.github.io/CSAPP3e_WP/image-20240202170120119-172450358557541.png">
 <meta property="article:published_time" content="2024-08-24T12:45:00.000Z">
-<meta property="article:modified_time" content="2024-09-23T08:05:46.991Z">
+<meta property="article:modified_time" content="2024-09-23T08:35:48.113Z">
 <meta property="article:author" content="Steven Gong">
 <meta property="article:tag" content="计算机基础">
 <meta name="twitter:card" content="summary_large_image">
@@ -375,9 +375,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs assembly">0x0000000000400ee0 &lt;+0&gt;:     sub    $0x8,%rsp<br>0x0000000000400ee4 &lt;+4&gt;:     mov    $0x402400,%esi<br>0x0000000000400ee9 &lt;+9&gt;:     call   0x401338 &lt;strings_not_equal&gt;<br>0x0000000000400eee &lt;+14&gt;:    test   %eax,%eax<br>0x0000000000400ef0 &lt;+16&gt;:    je     0x400ef7 &lt;phase_1+23&gt;<br>0x0000000000400ef2 &lt;+18&gt;:    call   0x40143a &lt;explode_bomb&gt;<br>0x0000000000400ef7 &lt;+23&gt;:    add    $0x8,%rsp<br>0x0000000000400efb &lt;+27&gt;:    ret<br></code></pre></td></tr></table></figure>
 
 <p>利用<code>x /s 0x402400</code>查看<code>0x402400</code>处的字符串，得到正确输入**Border relations with Canada have never been better.**：</p>
-<p><img src="/CSAPP3e_WP/image-20240125173348841-172450350911111.png" style="zoom: 67%;" align="left"></p>
-
-
+<img src="/CSAPP3e_WP/image-20240125173348841-172450350911111.png" class>
 
 <h3 id="Phase-2"><a href="#Phase-2" class="headerlink" title="Phase 2"></a>Phase 2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs assembly">0x0000000000400efc &lt;+0&gt;:     push   %rbp<br>0x0000000000400efd &lt;+1&gt;:     push   %rbx<br>0x0000000000400efe &lt;+2&gt;:     sub    $0x28,%rsp<br>0x0000000000400f02 &lt;+6&gt;:     mov    %rsp,%rsi<br>0x0000000000400f05 &lt;+9&gt;:     call   0x40145c &lt;read_six_numbers&gt;<br>0x0000000000400f0a &lt;+14&gt;:    cmpl   $0x1,(%rsp)<br>0x0000000000400f0e &lt;+18&gt;:    je     0x400f30 &lt;phase_2+52&gt;<br>0x0000000000400f10 &lt;+20&gt;:    call   0x40143a &lt;explode_bomb&gt;<br>0x0000000000400f15 &lt;+25&gt;:    jmp    0x400f30 &lt;phase_2+52&gt;<br>0x0000000000400f17 &lt;+27&gt;:    mov    -0x4(%rbx),%eax<br>0x0000000000400f1a &lt;+30&gt;:    add    %eax,%eax<br>0x0000000000400f1c &lt;+32&gt;:    cmp    %eax,(%rbx)<br>0x0000000000400f1e &lt;+34&gt;:    je     0x400f25 &lt;phase_2+41&gt;<br>0x0000000000400f20 &lt;+36&gt;:    call   0x40143a &lt;explode_bomb&gt;<br>0x0000000000400f25 &lt;+41&gt;:    add    $0x4,%rbx<br>0x0000000000400f29 &lt;+45&gt;:    cmp    %rbp,%rbx<br>0x0000000000400f2c &lt;+48&gt;:    jne    0x400f17 &lt;phase_2+27&gt;<br>0x0000000000400f2e &lt;+50&gt;:    jmp    0x400f3c &lt;phase_2+64&gt;<br>0x0000000000400f30 &lt;+52&gt;:    lea    0x4(%rsp),%rbx<br>0x0000000000400f35 &lt;+57&gt;:    lea    0x18(%rsp),%rbp<br>0x0000000000400f3a &lt;+62&gt;:    jmp    0x400f17 &lt;phase_2+27&gt;<br>0x0000000000400f3c &lt;+64&gt;:    add    $0x28,%rsp<br>0x0000000000400f40 &lt;+68&gt;:    pop    %rbx<br>0x0000000000400f41 &lt;+69&gt;:    pop    %rbp<br>0x0000000000400f42 &lt;+70&gt;:    ret<br></code></pre></td></tr></table></figure>
 
@@ -387,9 +385,7 @@
 
 <p>要求至少输入2个数，且第一个数不大于7，然后根据第一个数跳转，跳转表位于<code>0x402470</code>。</p>
 <p>向%eax写入的新值需要与0xc(%rsp)即第二个数相等。跳转表的第一项(对应第一个数为0)必然存在，可获得该项的跳转地址：</p>
-<p><img src="/CSAPP3e_WP/image-20240125104109016-172450351282313.png" style="zoom: 67%;" align="left"></p>
-
-
+<img src="/CSAPP3e_WP/image-20240125104109016-172450351282313.png" class>
 
 <p>输入<strong>0 207</strong>符合要求。</p>
 <h3 id="Phase-4"><a href="#Phase-4" class="headerlink" title="Phase 4"></a>Phase 4</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs assembly">0x000000000040100c &lt;+0&gt;:     sub    $0x18,%rsp<br>0x0000000000401010 &lt;+4&gt;:     lea    0xc(%rsp),%rcx<br>0x0000000000401015 &lt;+9&gt;:     lea    0x8(%rsp),%rdx<br>0x000000000040101a &lt;+14&gt;:    mov    $0x4025cf,%esi<br>0x000000000040101f &lt;+19&gt;:    mov    $0x0,%eax<br>0x0000000000401024 &lt;+24&gt;:    call   0x400bf0 &lt;__isoc99_sscanf@plt&gt;<br>0x0000000000401029 &lt;+29&gt;:    cmp    $0x2,%eax<br>0x000000000040102c &lt;+32&gt;:    jne    0x401035 &lt;phase_4+41&gt;<br>0x000000000040102e &lt;+34&gt;:    cmpl   $0xe,0x8(%rsp)<br>0x0000000000401033 &lt;+39&gt;:    jbe    0x40103a &lt;phase_4+46&gt;<br>0x0000000000401035 &lt;+41&gt;:    call   0x40143a &lt;explode_bomb&gt;<br>0x000000000040103a &lt;+46&gt;:    mov    $0xe,%edx<br>0x000000000040103f &lt;+51&gt;:    mov    $0x0,%esi<br>0x0000000000401044 &lt;+56&gt;:    mov    0x8(%rsp),%edi<br>0x0000000000401048 &lt;+60&gt;:    call   0x400fce &lt;func4&gt;<br>0x000000000040104d &lt;+65&gt;:    test   %eax,%eax<br>0x000000000040104f &lt;+67&gt;:    jne    0x401058 &lt;phase_4+76&gt;<br>0x0000000000401051 &lt;+69&gt;:    cmpl   $0x0,0xc(%rsp)<br>0x0000000000401056 &lt;+74&gt;:    je     0x40105d &lt;phase_4+81&gt;<br>0x0000000000401058 &lt;+76&gt;:    call   0x40143a &lt;explode_bomb&gt;<br>0x000000000040105d &lt;+81&gt;:    add    $0x18,%rsp<br>0x0000000000401061 &lt;+85&gt;:    ret<br></code></pre></td></tr></table></figure>
@@ -406,14 +402,10 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs assembly">and		$0xf,%edx				# 输入字符对16取余<br>movzbl	0x4024b0(%rdx),%edx		# 读取0x4024b0+%rdx处的字符<br>mov		$dl,0x10(%rsp,%rax,1)	# 保存处理完成的字符<br></code></pre></td></tr></table></figure>
 
 <p>查看<code>0x4024b0</code>处的数据，取前16个字符为<code>maduiersnfoyvbyl</code>：</p>
-<p><img src="/CSAPP3e_WP/image-20240125114931654-172450352160215.png" style="zoom: 67%;" align="left"></p>
-
-
+<img src="/CSAPP3e_WP/image-20240125114931654-172450352160215.png" class>
 
 <p>查看进行比较的字符串，位于<code>0x40245e</code>：</p>
-<p><img src="/CSAPP3e_WP/image-20240125115105490-172450352338817.png" align="left" style="zoom:67%;"></p>
-
-
+<img src="/CSAPP3e_WP/image-20240125115105490-172450352338817.png" class>
 
 <p>因此应该选取<code>0x4024b0</code>处偏移量依次为9, 15, 14, 5, 6, 7处的字符。偏移量由输入字符的ASCII码对16取余得到，不妨取输入字符的ASCII码为0x69,0x6f,0x6d,0x65,0x66,0x67。</p>
 <p>一个可行的输入为<strong>ionefg</strong>。</p>
@@ -422,21 +414,7 @@
 <p>输入为6个数字，循环跳出到<code>0x401153</code>。由<code>0x4a111b</code>, <code>0x4a111e</code>, <code>0x4a1121</code>处可知第一个数字不小于1且不大于6，将第一个数字存放于%eax。</p>
 <p><code>0x401138</code>处开始处理剩下的数字，要求与第一个数字不相等。结合<code>0x401151</code>处的<code>jmp 0x401114</code>，每个数字的范围都在1至6之间，且两两不相等。输入结束后跳转到<code>0x401153</code>，此处将每个数字i变为7-i，全部转换结束后执行<code>0x40116f</code>处语句。</p>
 <p>注意到内存地址<code>0x6032d0</code>，打印该处附近的值。</p>
-<p><img src="/CSAPP3e_WP/image-20240125154321644-17245034799789.png" style="zoom: 67%;" align="left"></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img src="/CSAPP3e_WP/image-20240125154321644-17245034799789.png" class>
 
 <p>该处可能为链表：</p>
 <table>
@@ -488,61 +466,17 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs assembly">0x00000000004015c4 &lt;+0&gt;:     sub    $0x78,%rsp<br>0x00000000004015c8 &lt;+4&gt;:     mov    %fs:0x28,%rax<br>0x00000000004015d1 &lt;+13&gt;:    mov    %rax,0x68(%rsp)<br>0x00000000004015d6 &lt;+18&gt;:    xor    %eax,%eax<br>0x00000000004015d8 &lt;+20&gt;:    cmpl   $0x6,0x202181(%rip)        # 0x603760 &lt;num_input_strings&gt;<br>0x00000000004015df &lt;+27&gt;:    jne    0x40163f &lt;phase_defused+123&gt;<br><br>0x00000000004015e1 &lt;+29&gt;:    lea    0x10(%rsp),%r8<br>0x00000000004015e6 &lt;+34&gt;:    lea    0xc(%rsp),%rcx<br>0x00000000004015eb &lt;+39&gt;:    lea    0x8(%rsp),%rdx<br>0x00000000004015f0 &lt;+44&gt;:    mov    $0x402619,%esi<br>0x00000000004015f5 &lt;+49&gt;:    mov    $0x603870,%edi<br>0x00000000004015fa &lt;+54&gt;:    call   0x400bf0 &lt;__isoc99_sscanf@plt&gt;<br>0x00000000004015ff &lt;+59&gt;:    cmp    $0x3,%eax<br>0x0000000000401602 &lt;+62&gt;:    jne    0x401635 &lt;phase_defused+113&gt;<br><br>0x0000000000401604 &lt;+64&gt;:    mov    $0x402622,%esi<br>0x0000000000401609 &lt;+69&gt;:    lea    0x10(%rsp),%rdi<br>0x000000000040160e &lt;+74&gt;:    call   0x401338 &lt;strings_not_equal&gt;<br><br>0x0000000000401613 &lt;+79&gt;:    test   %eax,%eax<br>0x0000000000401615 &lt;+81&gt;:    jne    0x401635 &lt;phase_defused+113&gt;<br>0x0000000000401617 &lt;+83&gt;:    mov    $0x4024f8,%edi<br>0x000000000040161c &lt;+88&gt;:    call   0x400b10 &lt;puts@plt&gt;<br>0x0000000000401621 &lt;+93&gt;:    mov    $0x402520,%edi<br>0x0000000000401626 &lt;+98&gt;:    call   0x400b10 &lt;puts@plt&gt;<br>0x000000000040162b &lt;+103&gt;:   mov    $0x0,%eax<br>0x0000000000401630 &lt;+108&gt;:   call   0x401242 &lt;secret_phase&gt;<br>0x0000000000401635 &lt;+113&gt;:   mov    $0x402558,%edi<br>0x000000000040163a &lt;+118&gt;:   call   0x400b10 &lt;puts@plt&gt;<br>0x000000000040163f &lt;+123&gt;:   mov    0x68(%rsp),%rax<br>0x0000000000401644 &lt;+128&gt;:   xor    %fs:0x28,%rax<br>0x000000000040164d &lt;+137&gt;:   je     0x401654 &lt;phase_defused+144&gt;<br>0x000000000040164f &lt;+139&gt;:   call   0x400b30 &lt;__stack_chk_fail@plt&gt;<br>0x0000000000401654 &lt;+144&gt;:   add    $0x78,%rsp<br>0x0000000000401658 &lt;+148&gt;:   ret<br></code></pre></td></tr></table></figure>
 
 <p>读取<code>0x402622</code>处的字符串：</p>
-<p><img src="/CSAPP3e_WP/image-20240125163456712-17245034740287.png" style="zoom: 67%;" align="left"></p>
-
-
+<img src="/CSAPP3e_WP/image-20240125163456712-17245034740287.png" class>
 
 <p>注意到<code>0x402619</code>处的数据，可见字符串<code>&quot;DrEvil&quot;</code>是第3个输入：</p>
-<p><img src="/CSAPP3e_WP/image-20240125163756124-17245034725135.png" style="zoom: 67%;" align="left"></p>
-
-
+<img src="/CSAPP3e_WP/image-20240125163756124-17245034725135.png" class>
 
 <p>在<code>0x4015fa</code>处（<code>sscanf</code>函数）打断点，从文件输入Phase 1~6的答案，观察<code>0x603870</code>处的数据：</p>
-<p><img src="/CSAPP3e_WP/image-20240125171715694-17245034630081.png" style="zoom: 67%;" align="left"></p>
-
-
-
-
-
-
-
-
-
-
+<img src="/CSAPP3e_WP/image-20240125171715694-17245034630081.png" class>
 
 <p><code>&quot;DrEvil&quot;</code>输入应该位于 <code>&quot;7 0&quot;</code>之后。</p>
 <p>要在<code>secret_phase</code>函数中避开炸弹，需要让调用的<code>fun7</code>函数返回2，传入参数%edi&#x3D;0x6030f0，查看该处附近的数据，发现若干具有两个指针的结构体：</p>
-<p><img src="/CSAPP3e_WP/image-20240125175347829-17245034644793.png" style="zoom:67%;" align="left"></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img src="/CSAPP3e_WP/image-20240125175347829-17245034644793.png" class>
 
 <p>检查<code>fun7</code>函数：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs assembly">0x0000000000401204 &lt;+0&gt;:     sub    $0x8,%rsp<br>0x0000000000401208 &lt;+4&gt;:     test   %rdi,%rdi<br>0x000000000040120b &lt;+7&gt;:     je     0x401238 &lt;fun7+52&gt;<br>0x000000000040120d &lt;+9&gt;:     mov    (%rdi),%edx<br>0x000000000040120f &lt;+11&gt;:    cmp    %esi,%edx<br>0x0000000000401211 &lt;+13&gt;:    jle    0x401220 &lt;fun7+28&gt;<br>0x0000000000401213 &lt;+15&gt;:    mov    0x8(%rdi),%rdi<br>0x0000000000401217 &lt;+19&gt;:    call   0x401204 &lt;fun7&gt;<br>0x000000000040121c &lt;+24&gt;:    add    %eax,%eax<br>0x000000000040121e &lt;+26&gt;:    jmp    0x40123d &lt;fun7+57&gt;<br>0x0000000000401220 &lt;+28&gt;:    mov    $0x0,%eax<br>0x0000000000401225 &lt;+33&gt;:    cmp    %esi,%edx<br>0x0000000000401227 &lt;+35&gt;:    je     0x40123d &lt;fun7+57&gt;<br>0x0000000000401229 &lt;+37&gt;:    mov    0x10(%rdi),%rdi<br>0x000000000040122d &lt;+41&gt;:    call   0x401204 &lt;fun7&gt;<br>0x0000000000401232 &lt;+46&gt;:    lea    0x1(%rax,%rax,1),%eax<br>0x0000000000401236 &lt;+50&gt;:    jmp    0x40123d &lt;fun7+57&gt;<br>0x0000000000401238 &lt;+52&gt;:    mov    $0xffffffff,%eax<br>0x000000000040123d &lt;+57&gt;:    add    $0x8,%rsp<br>0x0000000000401241 &lt;+61&gt;:    ret<br></code></pre></td></tr></table></figure>
@@ -571,19 +505,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs assembly">0x00000000004017a8 &lt;+0&gt;:     sub    $0x28,%rsp<br>0x00000000004017ac &lt;+4&gt;:     mov    %rsp,%rdi<br></code></pre></td></tr></table></figure>
 
 <p>在<code>0x4017ac</code>处打断点得到%rsp：</p>
-<p><img src="/CSAPP3e_WP/image-20240129095931505-172450353221319.png" style="zoom:67%;" align="left"></p>
-
-
-
-
-
-
-
-
-
-
-
-
+<img src="/CSAPP3e_WP/image-20240129095931505-172450353221319.png" class>
 
 <p>得到输入序列（注入指令与返回地址之间的部分随意输入）：</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">48</span> c7 c7 fa <span class="hljs-number">97</span> b9 <span class="hljs-number">59</span> <span class="hljs-number">68</span><br><span class="hljs-attribute">ec</span> <span class="hljs-number">17</span> <span class="hljs-number">40</span> <span class="hljs-number">00</span> c3 <span class="hljs-number">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span><br><span class="hljs-attribute">02</span> <span class="hljs-number">02</span> <span class="hljs-number">02</span> <span class="hljs-number">02</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span><br><span class="hljs-attribute">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span> <span class="hljs-number">01</span> <span class="hljs-number">01</span> <span class="hljs-number">03</span> <span class="hljs-number">03</span><br><span class="hljs-attribute">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span><br><span class="hljs-attribute">78</span> dc <span class="hljs-number">61</span> <span class="hljs-number">55</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span> <span class="hljs-number">00</span><br></code></pre></td></tr></table></figure>
@@ -645,11 +567,7 @@
 <p><strong>Attack Lab结束。</strong></p>
 <h2 id="4-Architecture-Lab-复用，丧心病狂"><a href="#4-Architecture-Lab-复用，丧心病狂" class="headerlink" title="4. Architecture Lab: 复用，丧心病狂"></a>4. Architecture Lab: 复用，丧心病狂</h2><p>准备工作：对gcc 10+的编译器打开编译选项<code>-fcommon</code>。</p>
 <p>并对<code>ssim.c</code>, <code>psim.c</code>删除含有<code>matherr</code>的部分：</p>
-<p><img src="/CSAPP3e_WP/image-20240130112206290-172450353894821.png" style="zoom:80%;" align="left"></p>
-
-
-
-
+<img src="/CSAPP3e_WP/image-20240130112206290-172450353894821.png" class>
 
 <h3 id="Part-A"><a href="#Part-A" class="headerlink" title="Part A"></a>Part A</h3><p>只需要按照<code>examples.c</code>的程序编写汇编代码即可，没有特别的难点，故下文直接给出解法。</p>
 <h4 id="sum"><a href="#sum" class="headerlink" title="sum"></a>sum</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs assembly">    .pos   0<br>    irmovq stack,%rsp<br>    call   main<br>    halt<br><br># Sample linked list<br>    .align 8<br>ele1:<br>    .quad  0x00a<br>    .quad  ele2<br>ele2:<br>    .quad  0x0b0<br>    .quad  ele3<br>ele3:<br>    .quad  0xc00<br>    .quad  0<br><br>main:<br>    irmovq ele1,%rdi<br>    call   sum<br>    ret<br>sum:<br>    xorq   %rax,%rax<br>    jmp    test<br>loop:<br>    mrmovq (%rdi),%rsi<br>    addq   %rsi,%rax<br>    mrmovq $8(%rdi),%rdi<br>test:    <br>    andq   %rdi,%rdi<br>    jne    loop<br>    ret<br><br>#stack starts here and grows to lower address<br>    .pos   0x200<br>stack:<br><br></code></pre></td></tr></table></figure>
@@ -659,116 +577,20 @@
 <h4 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs assembly">    .pos   0<br>    irmovq stack,%rsp<br>    call   main<br>    halt<br><br># Sample blocks<br>	.align 8<br>src:<br>    .quad 0x00a<br>    .quad 0x0b0<br>    .quad 0xc00<br>dest:<br>    .quad 0x111<br>    .quad 0x222<br>    .quad 0x333<br><br>main:<br>    irmovq src,%rdi<br>    irmovq dest,%rsi<br>    irmovq $3,%rdx<br>    call   copy<br>    ret<br>copy:<br>    xorq   %rax,%rax<br>    irmovq $8,%r8<br>    irmovq $1,%r9<br>    andq   %rdx,%rdx<br>    jmp    test<br>loop:<br>    mrmovq (%rdi),%rcx<br>    rmmovq %rcx,(%rsi)<br>    addq   %r8,%rdi<br>    addq   %r8,%rsi<br>    xorq   %rcx,%rax<br>    subq   %r9,%rdx<br>test:<br>    jne    loop<br>    ret<br><br>#stack starts here and grows to lower address<br>    .pos   0x200<br>stack:<br><br></code></pre></td></tr></table></figure>
 
 <h3 id="Part-B"><a href="#Part-B" class="headerlink" title="Part B"></a>Part B</h3><p>在<code>seq-full.hcl</code>中，为SEQ处理器添加<code>iaddq</code>指令，格式如下。</p>
-<p><img src="/CSAPP3e_WP/image-20240130103617334-172450354200723.png" style="zoom:80%;" align="left"></p>
+<img src="/CSAPP3e_WP/image-20240130103617334-172450354200723.png" class>
 
 <p>完成本部分的要点：</p>
 <p>·<code>iaddq</code>指令需要寄存器rB，需要regid byte并指定B source和E destination为rB，valB也是aluB输入</p>
 <p>·<code>iaddq</code>指令需要立即数valC，是aluA输入</p>
 <p>·<code>iaddq</code>指令需要更新条件码</p>
 <p>本部分需要的改动如下，一共8处：</p>
-<p><img src="/CSAPP3e_WP/image-20240130104635910-172450354535525.png" style="zoom: 50%;" align="left"></p>
+<img src="/CSAPP3e_WP/image-20240130104635910-172450354535525.png" class>
 
-<p><img src="/CSAPP3e_WP/image-20240130104730781-172450354929327.png" style="zoom: 60%;" align="left"></p>
+<img src="/CSAPP3e_WP/image-20240130104730781-172450354929327.png" class>
 
-<p><img src="/CSAPP3e_WP/image-20240130104906410-172450356093629.png" style="zoom: 55%;" align="left"></p>
+<img src="/CSAPP3e_WP/image-20240130104906410-172450356093629.png" class>
 
-<p><img src="/CSAPP3e_WP/image-20240130104938970-172450356436831.png" style="zoom:51%;" align="left"></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img src="/CSAPP3e_WP/image-20240130104938970-172450356436831.png" class>
 
 <h3 id="Part-C"><a href="#Part-C" class="headerlink" title="Part C"></a>Part C</h3><p>先仿照Part B添加<code>iaddq</code>指令，对初始状态的PIPE处理器和<code>ncopy.ys</code>程序执行基准测试<code>benchmark.pl</code>，CPE为15.18。</p>
 <h4 id="1-指令条数优化"><a href="#1-指令条数优化" class="headerlink" title="1.指令条数优化"></a>1.指令条数优化</h4><p>利用实现的<code>iaddq</code>指令减少指令数，同时利用减法的条件码直接判断<code>len</code>：</p>
@@ -825,21 +647,7 @@
 
 <p>添加数据旁路后，可以将全部<code>rmmovq</code>指令提前，程序中也减少了顺序限制，CPE减至7.69。</p>
 <p>重新考虑循环展开，经测试，如果循环展开成9路，并且查找树改为下图所示，则CPE优化到7.68：</p>
-<p><img src="/CSAPP3e_WP/image-20240131144006809-172450356875933.png" style="zoom:67%;" align="left"></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img src="/CSAPP3e_WP/image-20240131144006809-172450356875933.png" class>
 
 <p>此时发现查找树中已经包含了0，似乎取消在Base情况中特判0可以提高效率，修改此部分代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs assembly">Base:<br>    iaddq $6,%rdx			# start with root=3<br>    jl BR1<br>    jg BR5<br>    jmp copy3<br>BR1:<br>    iaddq $2,%rdx<br>    je copy1<br>    jg copy2<br>    ret         <br>BR5:<br>    iaddq $-2,%rdx<br>    jl copy4<br>    je copy5<br>BR7:<br>    iaddq $-2,%rdx<br>    jl copy6<br>	je copy7<br>copy8:<br>    mrmovq $56(%rdi), %r12 	<br>    rmmovq %r12, $56(%rsi) 	<br>	andq %r12, %r12	 		<br>    jle copy7<br>    iaddq $1, %rax 	<br># omitted<br></code></pre></td></tr></table></figure>
@@ -847,21 +655,7 @@
 <p>此时可以将CPE做到7.44，轻松满分——如果不用trick呢？</p>
 <p>虽然此处%rax的初值为零，可以去除第一条指令，但在一般情形下，%rax的初值可能是不确定的，恢复在第2步中被删除的<code>xorq %rax, %rax</code>指令，重新运行测试，CPE&#x3D;7.51。</p>
 <h4 id="5-参数修正与最终优化结果"><a href="#5-参数修正与最终优化结果" class="headerlink" title="5.参数修正与最终优化结果"></a>5.参数修正与最终优化结果</h4><p>6所在节点太深，可能需要调整查找树的结构；1,2,3对CPE影响大，故左子树和根不更改。尝试修改如下：</p>
-<p><img src="/CSAPP3e_WP/image-20240131165552508-172450357635835.png" style="zoom: 67%;" align="left"></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img src="/CSAPP3e_WP/image-20240131165552508-172450357635835.png" class>
 
 <p>修改Base的代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs assembly">Base:<br>    iaddq $6,%rdx			# start with root=3<br>    jl BR1<br>    jg BR6<br>    jmp copy3<br>BR1:<br>    iaddq $2,%rdx<br>    je copy1<br>    jg copy2<br>    ret <br>BR5:<br>	iaddq $1,%rdx<br>    jl copy4<br>    je copy5<br>BR6:<br>    iaddq $-3,%rdx<br>    jl BR5<br>    je copy6<br>BR7:<br>    iaddq $-2,%rdx<br>    jl copy7<br>copy8:<br>    mrmovq $56(%rdi), %r12 	<br>    rmmovq %r12, $56(%rsi) 	<br>	andq %r12, %r12	 		<br>    jle copy7<br>    iaddq $1, %rax 	<br># omitted<br></code></pre></td></tr></table></figure>
@@ -889,9 +683,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> i, j, tmp;<br><span class="hljs-keyword">if</span>(M==<span class="hljs-number">32</span>&amp;&amp;N==<span class="hljs-number">32</span>)&#123;<br>    <span class="hljs-type">int</span> var0,var1,var2,var3,var4,var5,var6,var7;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i+=<span class="hljs-number">8</span>)&#123;<br>        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;M;j+=<span class="hljs-number">8</span>)&#123;<br>            <span class="hljs-keyword">for</span>(tmp=i;tmp&lt;i+<span class="hljs-number">8</span>;tmp+=<span class="hljs-number">1</span>)&#123;<br>                var0=A[tmp][j]  ;var1=A[tmp][j+<span class="hljs-number">1</span>];var2=A[tmp][j+<span class="hljs-number">2</span>];var3=A[tmp][j+<span class="hljs-number">3</span>];<br>                var4=A[tmp][j+<span class="hljs-number">4</span>];var5=A[tmp][j+<span class="hljs-number">5</span>];var6=A[tmp][j+<span class="hljs-number">6</span>];var7=A[tmp][j+<span class="hljs-number">7</span>];<br>                B[j][tmp]  =var0;B[j+<span class="hljs-number">1</span>][tmp]=var1;B[j+<span class="hljs-number">2</span>][tmp]=var2;B[j+<span class="hljs-number">3</span>][tmp]=var3;<br>                B[j+<span class="hljs-number">4</span>][tmp]=var4;B[j+<span class="hljs-number">5</span>][tmp]=var5;B[j+<span class="hljs-number">6</span>][tmp]=var6;B[j+<span class="hljs-number">7</span>][tmp]=var7;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>用参数<code>-M 32 -N 32</code>测试该函数：</p>
-<p><img src="/CSAPP3e_WP/image-20240202145227226-172450357943937.png" style="zoom:67%;" align="left"></p>
-
-
+<img src="/CSAPP3e_WP/image-20240202145227226-172450357943937.png" class>
 
 <h4 id="64×64"><a href="#64×64" class="headerlink" title="64×64"></a>64×64</h4><p>缓存的容量为4行，只能对A矩阵每个8×8的块分为4×4的块进行操作，可以一次缓存8×4的数据。</p>
 <p>第一次缓存A矩阵前4行：</p>
@@ -904,17 +696,13 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(M==<span class="hljs-number">64</span>&amp;&amp;N==<span class="hljs-number">64</span>)&#123;<br>    	<span class="hljs-type">int</span> var0,var1,var2,var3,var4,var5,var6,var7;<br>	    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i+=<span class="hljs-number">8</span>)&#123;<br>            <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;M;j+=<span class="hljs-number">8</span>)&#123;<br>                <span class="hljs-keyword">for</span>(tmp=i;tmp&lt;i+<span class="hljs-number">4</span>;tmp+=<span class="hljs-number">1</span>)&#123;<br>                    <span class="hljs-comment">//step1a+1b</span><br>                    var0=A[tmp][j]  ;var1=A[tmp][j+<span class="hljs-number">1</span>];var2=A[tmp][j+<span class="hljs-number">2</span>];var3=A[tmp][j+<span class="hljs-number">3</span>];<br>                    var4=A[tmp][j+<span class="hljs-number">4</span>];var5=A[tmp][j+<span class="hljs-number">5</span>];var6=A[tmp][j+<span class="hljs-number">6</span>];var7=A[tmp][j+<span class="hljs-number">7</span>];<br>                    B[j][tmp]  =var0;B[j+<span class="hljs-number">1</span>][tmp]  =var1;B[j+<span class="hljs-number">2</span>][tmp]  =var2;B[j+<span class="hljs-number">3</span>][tmp]  =var3;<br>                    B[j][tmp+<span class="hljs-number">4</span>]=var4;B[j+<span class="hljs-number">1</span>][tmp+<span class="hljs-number">4</span>]=var5;B[j+<span class="hljs-number">2</span>][tmp+<span class="hljs-number">4</span>]=var6;B[j+<span class="hljs-number">3</span>][tmp+<span class="hljs-number">4</span>]=var7;<br>                &#125;<br>                <span class="hljs-keyword">for</span>(tmp=j;tmp&lt;j+<span class="hljs-number">4</span>;tmp+=<span class="hljs-number">1</span>)&#123;<br>                    <span class="hljs-comment">//step2a+2b</span><br>                    var0=A[i+<span class="hljs-number">4</span>][tmp];var1=A[i+<span class="hljs-number">5</span>][tmp];var2=A[i+<span class="hljs-number">6</span>][tmp];var3=A[i+<span class="hljs-number">7</span>][tmp];<br>                    var4=B[tmp][i+<span class="hljs-number">4</span>];var5=B[tmp][i+<span class="hljs-number">5</span>];var6=B[tmp][i+<span class="hljs-number">6</span>];var7=B[tmp][i+<span class="hljs-number">7</span>];<br>                    B[tmp][i+<span class="hljs-number">4</span>]=var0;B[tmp][i+<span class="hljs-number">5</span>]=var1;B[tmp][i+<span class="hljs-number">6</span>]=var2;B[tmp][i+<span class="hljs-number">7</span>]=var3;<br>                    B[tmp+<span class="hljs-number">4</span>][i]=var4;B[tmp+<span class="hljs-number">4</span>][i+<span class="hljs-number">1</span>]=var5;B[tmp+<span class="hljs-number">4</span>][i+<span class="hljs-number">2</span>]=var6;B[tmp+<span class="hljs-number">4</span>][i+<span class="hljs-number">3</span>]=var7;<br>                &#125;<br>                <span class="hljs-keyword">for</span>(tmp=i+<span class="hljs-number">4</span>;tmp&lt;i+<span class="hljs-number">8</span>;tmp+=<span class="hljs-number">1</span>)&#123;<br>               	    <span class="hljs-comment">//step3</span><br>                    var4=A[tmp][j+<span class="hljs-number">4</span>];var5=A[tmp][j+<span class="hljs-number">5</span>];var6=A[tmp][j+<span class="hljs-number">6</span>];var7=A[tmp][j+<span class="hljs-number">7</span>];<br>                    B[j+<span class="hljs-number">4</span>][tmp]=var4;B[j+<span class="hljs-number">5</span>][tmp]=var5;B[j+<span class="hljs-number">6</span>][tmp]=var6;B[j+<span class="hljs-number">7</span>][tmp]=var7;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 <p>用参数<code>-M 64 -N 64</code>测试该函数：</p>
-<p><img src="/CSAPP3e_WP/image-20240202164732726-172450358245639.png" style="zoom:67%;" align="left"></p>
-
-
+<img src="/CSAPP3e_WP/image-20240202164732726-172450358245639.png" class>
 
 <h4 id="61-times-67"><a href="#61-times-67" class="headerlink" title="61$\times$67"></a>61$\times$67</h4><p>M和N对于缓存容量而言难以对齐，设块大小为$b\times b$，算法如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(M==<span class="hljs-number">61</span>&amp;&amp;N==<span class="hljs-number">67</span>)&#123;<br>    <span class="hljs-type">int</span> chunk_i, chunk_j;<br>	<span class="hljs-type">int</span> b = BLOCK_SIZE;		<span class="hljs-comment">//TBD</span><br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i += b) &#123;<br>    	<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; M; j += b) &#123;<br>        	<span class="hljs-keyword">for</span> (chunk_i = i; chunk_i &lt; N &amp;&amp; chunk_i &lt; i + b; chunk_i+=<span class="hljs-number">1</span>) &#123;<br>            	<span class="hljs-keyword">for</span> (chunk_j = j; chunk_j &lt; M &amp;&amp; chunk_j &lt; j + b; chunk_j+=<span class="hljs-number">1</span>) &#123;<br>                	tmp = A[chunk_i][chunk_j];<br>                	B[chunk_j][chunk_i] = tmp;<br>            	&#125;<br>        	&#125;<br>    	&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>不妨令b适当大些，取b&#x3D;16，用参数<code>-M 61 -N 67</code>测试该函数：</p>
-<p><img src="/CSAPP3e_WP/image-20240202170120119-172450358557541.png" style="zoom:67%;" align="left"></p>
-
-
+<img src="/CSAPP3e_WP/image-20240202170120119-172450358557541.png" class>
 
 <p><strong>*为了在现代的环境上运行评测脚本，你可能需要安装2to3用于转换脚本为符合Python3语法规则的版本。</strong></p>
 <h2 id="5b-Performance-Lab-Omitted"><a href="#5b-Performance-Lab-Omitted" class="headerlink" title="5b. Performance Lab(Omitted)"></a>5b. Performance Lab(Omitted)</h2><p>这个实验年代久远、太无聊、编码过程繁琐，并且评测脚本没有定量的评分目标，懒得做。</p>
