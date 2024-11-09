@@ -18,16 +18,15 @@
   <meta name="author" content="Steven Gong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Preface今年忙着期中考&amp;Labs&amp;看论文，没什么时间打HG(去年沉迷HG期中爆炸了)，那就挑个几道题做一做，拿点分用来水二课学时好了。 去年的题解：Hackergame 2023 Writeup - sgong’s homepage 本文已经过优化以适合在线阅读，重新组织了原始writeup，并添加了部分内容。 获取题目附件、官方题解、更多选手题解请访问官方repo。 签到题">
+    <meta name="description" content="Preface今年忙着期中考&amp;Labs&amp;看论文，没什么时间打HG(去年沉迷HG期中爆炸了)，那就挑个几道题做一做，拿点分用来水二课学时好了。 去年的题解：Hackergame 2023 Writeup - sgong’s homepage 本文已经过优化以适合在线阅读，重新组织了原始writeup、修复了少量bugs，并添加了部分内容。 获取题目附件、官方题解、更多选手题解请访问官">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hackergame 2024 Writeup">
 <meta property="og:url" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/index.html">
 <meta property="og:site_name" content="sgong&#39;s homepage">
-<meta property="og:description" content="Preface今年忙着期中考&amp;Labs&amp;看论文，没什么时间打HG(去年沉迷HG期中爆炸了)，那就挑个几道题做一做，拿点分用来水二课学时好了。 去年的题解：Hackergame 2023 Writeup - sgong’s homepage 本文已经过优化以适合在线阅读，重新组织了原始writeup，并添加了部分内容。 获取题目附件、官方题解、更多选手题解请访问官方repo。 签到题">
+<meta property="og:description" content="Preface今年忙着期中考&amp;Labs&amp;看论文，没什么时间打HG(去年沉迷HG期中爆炸了)，那就挑个几道题做一做，拿点分用来水二课学时好了。 去年的题解：Hackergame 2023 Writeup - sgong’s homepage 本文已经过优化以适合在线阅读，重新组织了原始writeup、修复了少量bugs，并添加了部分内容。 获取题目附件、官方题解、更多选手题解请访问官">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/image-20241102120124855.png">
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/flagbox.jpg">
-<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-02%20124753.png">
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/image-20241102124817927.png">
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/image-20241102132746419.png">
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/image-20241102132818249.png">
@@ -36,7 +35,6 @@
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/image04-1730531315541-25.jpg">
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/image06-1730528875326-21.jpg">
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/image-20241102141937460.png">
-<meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-02%20145841.png">
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/Screenshot_20241108_214106_Google.jpg">
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/image-20241108215103789.png">
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/image-20241102145204743.png">
@@ -52,7 +50,7 @@
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/image-20241106193944867.png">
 <meta property="og:image" content="https://sgong-0224.github.io/Hackergame2024_WriteUp/image-20241106193737003.png">
 <meta property="article:published_time" content="2024-11-09T04:30:00.000Z">
-<meta property="article:modified_time" content="2024-11-09T04:33:01.316Z">
+<meta property="article:modified_time" content="2024-11-09T04:46:29.770Z">
 <meta property="article:author" content="Steven Gong">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Hackergame">
@@ -326,21 +324,21 @@
                 
                 <h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>今年忙着期中考&amp;Labs&amp;看论文，没什么时间打HG(去年沉迷HG期中爆炸了)，那就挑个几道题做一做，拿点分用来水二课学时好了。</p>
 <p>去年的题解：<a href="https://sgong-0224.github.io/Hackergame2023_WP/">Hackergame 2023 Writeup - sgong’s homepage</a></p>
-<p>本文已经过优化以适合在线阅读，重新组织了原始writeup，并添加了部分内容。</p>
+<p>本文已经过优化以适合在线阅读，重新组织了原始writeup、修复了少量bugs，并添加了部分内容。</p>
 <p>获取题目附件、官方题解、更多选手题解请访问<a target="_blank" rel="noopener" href="https://github.com/USTC-Hackergame/hackergame2024-writeups/tree/master">官方repo</a>。</p>
 <h2 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h2><h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>让我们说……各种语言，开始今年的冒险！</p>
 <h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>年度惯例：经典query参数，秒了</p>
-<img src="/Hackergame2024_WriteUp/image-20241102120124855.png" alt="image-20241102120124855" style="zoom: 50%;">
+<img src="/Hackergame2024_WriteUp/image-20241102120124855.png" class>
 
 <h2 id="打不开的盒"><a href="#打不开的盒" class="headerlink" title="打不开的盒"></a>打不开的盒</h2><h3 id="题目描述：-1"><a href="#题目描述：-1" class="headerlink" title="题目描述："></a>题目描述：</h3><p>如果一块砖头里塞进了一张写了 flag 的纸条，应该怎么办呢？相信这不是一件困难的事情。</p>
 <p>现在，你遇到了同样的情况：这里有一个密封盒子的设计文件，透过镂空的表面你看到里面有些东西……</p>
-<img src="/Hackergame2024_WriteUp/flagbox.jpg" class title="盒子">
+<img src="/Hackergame2024_WriteUp/flagbox.jpg" class>
 
 <p>那只要把它 3D 打印出来之后砸开不就解决了？用网上的制造服务的话，可能还没收到东西比赛就结束了，所以难道真的要去买一台 3D 打印机才能够看到里面的东西吗？</p>
 <h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p>注意到数字是中空的，用一个可以打开.stl文件的软件(比如Windows 3D查看器)查看它：</p>
-<img src="/Hackergame2024_WriteUp/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-02%20124753.png" alt="屏幕截图 2024-11-02 124753" style="zoom:25%;">
 
-<img src="/Hackergame2024_WriteUp/image-20241102124817927.png" alt="image-20241102124817927" style="zoom: 25%;">
+
+<img src="/Hackergame2024_WriteUp/image-20241102124817927.png" class>
 
 <p>flag为<code>flag&#123;Dr4W_Us!nG_fR3E_C4D!!w0W&#125;</code></p>
 <h2 id="每日论文太多了！"><a href="#每日论文太多了！" class="headerlink" title="每日论文太多了！"></a>每日论文太多了！</h2><h3 id="题目描述：-2"><a href="#题目描述：-2" class="headerlink" title="题目描述："></a>题目描述：</h3><p>传闻，每日新发表的论文</p>
@@ -362,9 +360,9 @@
 <hr>
 <p>要怎么做才能读读 <a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/3650212.3652145">我们的论文</a>？只要是我能做的，我什么都愿意做！</p>
 <h3 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h3><p>尝试用Microsoft Word打开pdf，并搜索flag:</p>
-<img src="/Hackergame2024_WriteUp/image-20241102132746419.png" alt="image-20241102132746419" style="zoom:33%;">
+<img src="/Hackergame2024_WriteUp/image-20241102132746419.png" class>
 
-<img src="/Hackergame2024_WriteUp/image-20241102132818249.png" alt="image-20241102132818249" style="zoom: 33%;">
+<img src="/Hackergame2024_WriteUp/image-20241102132818249.png" class>
 
 <p>flag为<code>flag&#123;h4PpY_hAck1ng_3veRyd4y&#125;</code></p>
 <h2 id="旅行照片4-0"><a href="#旅行照片4-0" class="headerlink" title="旅行照片4.0"></a>旅行照片4.0</h2><h3 id="题目描述：-3"><a href="#题目描述：-3" class="headerlink" title="题目描述："></a>题目描述：</h3><p>「又要重复吗，绝望的轮回」</p>
@@ -379,7 +377,7 @@
 <blockquote>
 <p>  你们的生活到底真的假的呀？每天要么就是看漫展看偶像看 live 喝酒吃烧烤，要么就是这里那里旅游。阵容一宣，说冲就冲，群一拉，机票一买，钱就像大风刮来的，时间好像一直有。c**4 你们也去，mu**ca 你们也去，m**o 你们也去，to*ea*i 你们也去。我怎么一天到晚都在上班啊，你们那到底是怎么弄的呀？教教我行不行</p>
 </blockquote>
-  <img src="/Hackergame2024_WriteUp/klkq-1730528012053-14.jpg" alt="klkq" style="zoom: 25%;">
+  <img src="/Hackergame2024_WriteUp/klkq-1730528012053-14.jpg" class>
 </blockquote>
 <p><del>出去玩的最多的难道不就是您自己吗？</del></p>
 <p>看样子学长是受到了什么刺激…… 会是什么呢？话说照片里这是…… Leo 酱？……什么时候</p>
@@ -387,9 +385,9 @@
 <p>问题 2: 话说 Leo 酱上次出现在桁架上是……科大今年的 ACG 音乐会？活动日期我没记错的话是？（格式：<code>YYYYMMDD</code>）</p>
 <h4 id="诶？我带-LEO-酱出去玩？真的假的？"><a href="#诶？我带-LEO-酱出去玩？真的假的？" class="headerlink" title="诶？我带 LEO 酱出去玩？真的假的？"></a>诶？我带 LEO 酱出去玩？真的假的？</h4><p>「拍照的时候带着 LEO 酱看起来是个不错的选择」，回忆完上次的 ACG 音乐会，你这样想到，不过说到底要去哪里呢？</p>
 <p>这样想着，你打开自己的相册翻找，「我记得之前保存了几个还不错的地方……」</p>
-<img src="/Hackergame2024_WriteUp/image01-1730531296195-23.jpg" style="zoom:25%;">
+<img src="/Hackergame2024_WriteUp/image01-1730531296195-23.jpg" class>
 
-<img src="/Hackergame2024_WriteUp/image04-1730531315541-25.jpg" style="zoom:25%;">
+<img src="/Hackergame2024_WriteUp/image04-1730531315541-25.jpg" class>
 
 <p>嗯？奇怪的记忆增加了。诶，我到过这些地方吗？而且这两张照片拍摄地的距离……是不是有点远？</p>
 <h4 id="题目-3-4"><a href="#题目-3-4" class="headerlink" title="题目 3-4"></a>题目 3-4</h4><p>问题 3: 这个公园的名称是什么？（不需要填写公园所在市区等信息）</p>
@@ -404,17 +402,20 @@
 <h4 id="题目-5-6"><a href="#题目-5-6" class="headerlink" title="题目 5-6"></a>题目 5-6</h4><p>问题 5: 距离拍摄地最近的医院是？（无需包含院区、地名信息，格式：XXX医院）</p>
 <p>问题 6: 左下角的<strong>动车组型号</strong>是？</p>
 <h3 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h3><p><strong>问题1~2：</strong>拍摄地点为中区东边&#x2F;<strong>东校区西门</strong>对面的科创驿站，(通过查找相册)容易发现今年ACG音乐会的日期为<strong>20240519</strong>。</p>
-<img src="/Hackergame2024_WriteUp/image-20241102141937460.png" alt="image-20241102141937460" style="zoom: 50%;">
+<img src="/Hackergame2024_WriteUp/image-20241102141937460.png" class>
 
 <p><strong>问题3~4：</strong>第3题是简单的，根据“六安园林”就可以去搜索六安的公园了，候选项不多，<strong>中央公园</strong>比较符合图片特征。第4题对和我一样网络状况不太好的人比较困难，丢给Google Lens，很多张图的说明都指向<strong>坛子岭</strong>，那就是它了。</p>
-<p><img src="/Hackergame2024_WriteUp/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-11-02%20145841.png" alt="屏幕截图 2024-11-02 145841" style="zoom: 50%;" align="left"><img src="/Hackergame2024_WriteUp/Screenshot_20241108_214106_Google.jpg" alt="Screenshot_20241108_214106_Google" style="zoom:20%;"></p>
+<img src="/Hackergame2024_WriteUp/Screenshot_20241108_214106_Google.jpg" class>
+
+
+
 <p>拿到flag：</p>
-<img src="/Hackergame2024_WriteUp/image-20241108215103789.png" alt="image-20241108215103789" style="zoom: 50%;">
+<img src="/Hackergame2024_WriteUp/image-20241108215103789.png" class>
 
 <p><strong>问题5~6：</strong>根据列车头型判断为CRH6系列车型，结合旁边的CRH5动车组推断照片拍摄于北方地区。根据列车涂装可以看出该车为北京市郊铁路怀密线的列车，型号为<strong>CRH6F-A</strong>，沿怀密线可以找到拍摄地点位于回龙观地区(下图)，左下方楼群即为拍摄地点，也是最近的医院：北京<strong>积水潭医院</strong>新龙泽院区。</p>
-<img src="/Hackergame2024_WriteUp/image-20241102145204743.png" class title="image-20241102145204743">
+<img src="/Hackergame2024_WriteUp/image-20241102145204743.png" class>
 
-<img src="/Hackergame2024_WriteUp/image-20241102145042066.png" alt="image-20241102145042066" style="zoom:50%;">
+<img src="/Hackergame2024_WriteUp/image-20241102145042066.png" class>
 
 <h2 id="猫咪问答（Hackergame-十周年纪念版）"><a href="#猫咪问答（Hackergame-十周年纪念版）" class="headerlink" title="猫咪问答（Hackergame 十周年纪念版）"></a>猫咪问答（Hackergame 十周年纪念版）</h2><h3 id="题目描述：-4"><a href="#题目描述：-4" class="headerlink" title="题目描述："></a>题目描述：</h3><p>多年回答猫咪问答的猫咪大多目光锐利，极度自信，且智力逐年增加，最后完全变成猫咪问答高手。回答猫咪问答会优化身体结构，突破各种猫咪极限。猫咪一旦开始回答猫咪问答，就说明这只猫咪的智慧品行样貌通通都是上等，这辈子注定在猫咪界大有作为。</p>
 <p>提示：<strong>解出谜题不需要是科大在校猫咪</strong>。解题遇到困难？你可以参考以下题解：</p>
@@ -449,27 +450,39 @@
 <li>大语言模型会把输入分解为一个一个的 token 后继续计算，请问这个网页的 HTML 源代码会被 Meta 的 Llama 3 70B 模型的 tokenizer 分解为多少个 token？<strong>（5 分）</strong></li>
 </ol>
 <p>提示：首次打开本页时的 HTML 源代码，答案是一个非负整数</p>
-<h3 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a>题解：</h3><p>**1.**3A204</p>
+<h3 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a>题解：</h3><ol>
+<li>3A204</li>
+</ol>
 <p>在<a target="_blank" rel="noopener" href="https://lug.ustc.edu.cn/wiki/lug/events/hackergame/">信息安全大赛 Hackergame - LUG @ USTC</a>有指向Hackergame 2015的链接<a target="_blank" rel="noopener" href="https://lug.ustc.edu.cn/wiki/sec/contest.html">第二届安全竞赛（存档）</a></p>
-<p>**2.**2682</p>
+<ol start="2">
+<li>2682</li>
+</ol>
 <p>把所有新闻稿中的数据都尝试一遍：<a target="_blank" rel="noopener" href="https://lug.ustc.edu.cn/news/2019/12/hackergame-2019/">中国科学技术大学第六届信息安全大赛圆满结束 - LUG @ USTC</a></p>
-<p>**3.**程序员的自我修养</p>
+<ol start="3">
+<li>程序员的自我修养</li>
+</ol>
 <p><a target="_blank" rel="noopener" href="https://github.com/ustclug/hackergame2018-writeups/blob/master/misc/others.md">hackergame2018-writeups&#x2F;misc&#x2F;others.md at master · ustclug&#x2F;hackergame2018-writeups</a></p>
-<p>**4.**336</p>
+<ol start="4">
+<li>336</li>
+</ol>
 <p>原文：<a target="_blank" rel="noopener" href="https://www.usenix.org/system/files/usenixsecurity24-ma-jinrui.pdf">USENIXSecurity2024-FakeBehalf-Final-Version.pdf</a> Chapter 6</p>
 <blockquote>
 <p>  All 20 clients are configured as MUAs for all 16 providers via IMAP, resulting in 336 combinations (including 16 web interfaces of target providers). </p>
 </blockquote>
-<p>**5.**6e90b6</p>
+<ol start="5">
+<li>6e90b6</li>
+</ol>
 <p>查看相关commit记录即可：</p>
-<img src="/Hackergame2024_WriteUp/image-20241102182843171.png" class title="image-20241102182843171">
+<img src="/Hackergame2024_WriteUp/image-20241102182843171.png" class>
 
-<p>**6.**1833</p>
+<ol start="6">
+<li>1833</li>
+</ol>
 <p>没有查到文档，用暴力方式解决：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By<br><span class="hljs-keyword">from</span> selenium.webdriver.common.keys <span class="hljs-keyword">import</span> Keys<br><span class="hljs-keyword">from</span> selenium.webdriver.common.alert <span class="hljs-keyword">import</span> Alert<br><span class="hljs-keyword">import</span> re, time<br>tk_keys=<span class="hljs-string">&#x27;...&#x27;</span> <span class="hljs-comment"># token</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">url</span>):<br>    driver = webdriver.Edge()<br>    time.sleep(<span class="hljs-number">4</span>)<br>    i=<span class="hljs-number">0</span><br>        <br>    <span class="hljs-keyword">while</span> i &lt;= <span class="hljs-number">128000</span>:<br>        driver.get(url)<br>        q6=<span class="hljs-built_in">str</span>(i)<br>        input_element = driver.find_element(By.NAME, <span class="hljs-string">&#x27;q6&#x27;</span>)<br>        driver.execute_script(<span class="hljs-string">&quot;arguments[0].value = arguments[1];&quot;</span>, input_element, q6)<br>        <br>        submit_button = driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@type=&quot;submit&quot; and @class=&quot;btn btn-lg btn-primary btn-block&quot;]&#x27;</span>)<br>        submit_button.click()<br>        <br>        result = driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//div[@class=&quot;alert alert-secondary&quot; and @role=&quot;alert&quot;]&#x27;</span>).text<br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;5&#x27;</span> <span class="hljs-keyword">in</span> result:<br>            <span class="hljs-built_in">print</span>(i)<br>            <span class="hljs-keyword">break</span><br>        i+=<span class="hljs-number">1</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    url = <span class="hljs-string">&quot;http://202.38.93.141:13030/?token=&quot;</span>+tk_keys<br>    main(url)<br></code></pre></td></tr></table></figure>
 
 <p>获取两个flag：</p>
-<img src="/Hackergame2024_WriteUp/image-20241103004545057.png" class title="image-20241103004545057">
+<img src="/Hackergame2024_WriteUp/image-20241103004545057.png" class>
 
 <h2 id="惜字如金-3-0-部分"><a href="#惜字如金-3-0-部分" class="headerlink" title="惜字如金 3.0 部分"></a>惜字如金 3.0 部分</h2><p>惜字如金一向是程序开发的优良传统。无论是「<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8390979/why-create-system-call-is-called-creat">creat</a>」还是「<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8226075/why-http-referer-is-single-r-not-http-referrer">referer</a>」，都无不闪耀着程序员「节约每句话中的每一个字母」的优秀品质。两年前，信息安全大赛组委会正式推出了「惜字如金化」（XZRJification）标准规范，受到了广大程序开发人员的热烈欢迎和一致好评。现将该标准重新辑录如下。</p>
 <h3 id="题目描述：-5"><a href="#题目描述：-5" class="headerlink" title="题目描述："></a>题目描述：</h3><h4 id="惜字如金化标准"><a href="#惜字如金化标准" class="headerlink" title="惜字如金化标准"></a>惜字如金化标准</h4><p>惜字如金化指的是将一串文本中的部分字符删除，从而形成另一串文本的过程。该标准针对的是文本中所有由 52 个拉丁字母连续排布形成的序列，在下文中统称为「单词」。一个单词中除「<code>AEIOUaeiou</code>」外的 42 个字母被称作「辅音字母」。整个惜字如金化的过程按照以下两条原则对文本中的每个单词进行操作：</p>
@@ -507,7 +520,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By<br><span class="hljs-keyword">import</span> re, time<br><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urljoin, urlparse<br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque<br><br>tk_keys=<span class="hljs-string">&#x27;...&#x27;</span> <span class="hljs-comment"># token</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_strings_in_page</span>(<span class="hljs-params">driver, pattern</span>):<br>    <span class="hljs-string">&quot;&quot;&quot; 在当前页面中查找符合模式的字符串 &quot;&quot;&quot;</span><br>    page_text = driver.page_source<br>    matches = re.findall(pattern, page_text)<br>    <span class="hljs-keyword">return</span> matches<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">url</span>):<br>    driver = webdriver.Edge()<br>    visited = <span class="hljs-built_in">set</span>()<br>    to_visit = deque([(url, <span class="hljs-number">0</span>)])  <span class="hljs-comment"># 队列存储待访问的URL及其深度</span><br>    pattern = re.<span class="hljs-built_in">compile</span>(<span class="hljs-string">r&#x27;flag\&#123;.*?\&#125;&#x27;</span>)<br>    found_flags = []<br>    depth=<span class="hljs-number">2</span><br>    retry=[]<br>    <br>    <span class="hljs-keyword">while</span> to_visit:<br>        current_url, current_depth = to_visit.popleft()<br>        <span class="hljs-keyword">if</span> current_url <span class="hljs-keyword">in</span> visited <span class="hljs-keyword">or</span> current_depth &gt; depth:<br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">try</span>:<br>            driver.get(current_url)<br>            visited.add(current_url)<br>            page_source = driver.page_source<br>            flags = pattern.findall(page_source)<br>            <span class="hljs-keyword">if</span> flags:<br>                found_flags.extend(flags)<br>            <span class="hljs-keyword">if</span> current_depth &lt; depth:<br>                links = driver.find_elements(By.TAG_NAME, <span class="hljs-string">&#x27;a&#x27;</span>)<br>                <span class="hljs-keyword">for</span> link <span class="hljs-keyword">in</span> links:<br>                    href = link.get_attribute(<span class="hljs-string">&#x27;href&#x27;</span>)<br>                    <span class="hljs-keyword">if</span> href <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> href.startswith(<span class="hljs-string">&#x27;#&#x27;</span>) <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> href.startswith(<span class="hljs-string">&#x27;javascript:&#x27;</span>):<br>                        full_url = urljoin(current_url, href)<br>                        <span class="hljs-keyword">if</span> full_url <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> visited:<br>                            to_visit.append((full_url, current_depth + <span class="hljs-number">1</span>))<br>        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Error processing URL <span class="hljs-subst">&#123;current_url&#125;</span>: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br>            retry.append(current_url)<br>            <br>    <span class="hljs-keyword">for</span> url <span class="hljs-keyword">in</span> retry:<br>        <span class="hljs-keyword">try</span>:<br>            driver.get(url)<br>            flags = pattern.findall(driver.page_source)<br>            <span class="hljs-keyword">if</span> flags:<br>                found_flags.extend(flags)<br>        <span class="hljs-keyword">except</span>:<br>            <span class="hljs-keyword">pass</span><br>        time.sleep(<span class="hljs-number">0.1</span>)<br>            <br>    <span class="hljs-built_in">print</span>(found_flags)<br>    <br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    url = <span class="hljs-string">&quot;https://chal01-4oofrhcv.hack-challenge.lug.ustc.edu.cn:8443/?token=&quot;</span>+tk_keys<br>    main(url)<br></code></pre></td></tr></table></figure>
 
 <p>可以拿到一个flag：</p>
-<img src="/Hackergame2024_WriteUp/image-20241102232515997.png" class title="image-20241102232515997">
+<img src="/Hackergame2024_WriteUp/image-20241102232515997.png" class>
 
 <h2 id="不宽的宽字符"><a href="#不宽的宽字符" class="headerlink" title="不宽的宽字符"></a>不宽的宽字符</h2><h3 id="题目描述：-7"><a href="#题目描述：-7" class="headerlink" title="题目描述："></a>题目描述：</h3><p>A 同学决定让他设计的 Windows 程序更加「国际化」一些，首先要做的就是读写各种语言写下的文件名。于是他放弃 C 语言中的 <code>char</code>，转而使用宽字符 <code>wchar_t</code>，显然这是一个国际化的好主意。</p>
 <p>经过一番思考，他写出了下面这样的代码，用来读入文件名：</p>
@@ -532,15 +545,15 @@
 <h3 id="题解：-7"><a href="#题解：-7" class="headerlink" title="题解："></a>题解：</h3><p>输入一个宽字符串(UTF-16LE)，加上<code>you_cant_get_the_flag</code>后，以窄字符(UTF-8)解码，结果为<code>theflag</code>。</p>
 <p>因此只需要构造UTF-16LE编码为<code>746865666C616700</code>的字符串即可。</p>
 <p>通过<a target="_blank" rel="noopener" href="https://www.toolhelper.cn/EncodeDecode/EncodeDecode">在线工具</a>可以方便地计算出需要的字符串“桴晥慬g”，拿到flag：</p>
-<img src="/Hackergame2024_WriteUp/image-20241103013707512.png" class title="image-20241103013707512">
+<img src="/Hackergame2024_WriteUp/image-20241103013707512.png" class>
 
-<h2 id="喜欢做签到的-CTFer-你们好呀"><a href="#喜欢做签到的-CTFer-你们好呀" class="headerlink" title="喜欢做签到的 CTFer 你们好呀"></a>喜欢做签到的 CTFer 你们好呀</h2><h3 id="题目描述：-8"><a href="#题目描述：-8" class="headerlink" title="题目描述："></a>题目描述：</h3><img src="/Hackergame2024_WriteUp/checkin-1730607108272-1.jpg" class title="我要成为签到题高手.jpg">
+<h2 id="喜欢做签到的-CTFer-你们好呀"><a href="#喜欢做签到的-CTFer-你们好呀" class="headerlink" title="喜欢做签到的 CTFer 你们好呀"></a>喜欢做签到的 CTFer 你们好呀</h2><h3 id="题目描述：-8"><a href="#题目描述：-8" class="headerlink" title="题目描述："></a>题目描述：</h3><img src="/Hackergame2024_WriteUp/checkin-1730607108272-1.jpg" class>
 
 <p>喜欢做签到的 CTFer 你们好呀，我是一道更<strong>典型</strong>的 checkin：有两个 flag 就藏在中国科学技术大学校内 CTF 战队的招新主页里！</p>
 <h3 id="题解：-8"><a href="#题解：-8" class="headerlink" title="题解："></a>题解：</h3><p>USTC NEBULA战队主页<a target="_blank" rel="noopener" href="https://www.nebuu.la/">NebuTerm</a>。flag既然藏在主页“里”，那就<code>ls -al</code>一把梭；并且<code>help</code>给我们展示了一个看似有点奇怪的<code>env</code>命令，试着运行一下，就可以拿到两个flag：</p>
-<img src="/Hackergame2024_WriteUp/image-20241103121133424.png" class title="image-20241103121133424">
+<img src="/Hackergame2024_WriteUp/image-20241103121133424.png" class>
 
-<h2 id="优雅的不等式-部分"><a href="#优雅的不等式-部分" class="headerlink" title="优雅的不等式 部分"></a>优雅的不等式 部分</h2><h3 id="题目描述：-9"><a href="#题目描述：-9" class="headerlink" title="题目描述："></a>题目描述：</h3><img src="/Hackergame2024_WriteUp/image-20241106193944867.png" alt="image-20241106193944867" style="zoom: 80%;" align="left">
+<h2 id="优雅的不等式-部分"><a href="#优雅的不等式-部分" class="headerlink" title="优雅的不等式 部分"></a>优雅的不等式 部分</h2><h3 id="题目描述：-9"><a href="#题目描述：-9" class="headerlink" title="题目描述："></a>题目描述：</h3><img src="/Hackergame2024_WriteUp/image-20241106193944867.png" class>
 
 <p>你的数学分析助教又在群里发这些奇怪的东西，「注意力惊人」，你随手在群里吐槽了一句。</p>
 <p>不过，也许可以通过技术手段弥补你涣散的注意力。</p>
@@ -555,7 +568,7 @@
 <p>注：解决这道题不需要使用商业软件，只使用 SymPy 也是可以的。</p>
 <h3 id="题解：-9"><a href="#题解：-9" class="headerlink" title="题解："></a>题解：</h3><p>第一问还是好构造的，把π的部分拆出来，注意到4x<sup>2</sup>的积分是4&#x2F;3，减去常数4恰好可行。</p>
 <p>第二问就有点意思了，难道(4q-p)x<sup>q-1</sup>不优雅吗？不过SymPy确实算不出来(</p>
-<img src="/Hackergame2024_WriteUp/image-20241106193737003.png" alt="image-20241106193737003" align="left">
+<img src="/Hackergame2024_WriteUp/image-20241106193737003.png" class>
 
 
                 
